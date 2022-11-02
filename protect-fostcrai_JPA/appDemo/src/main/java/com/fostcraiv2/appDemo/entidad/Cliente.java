@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="clientes")
 public class Cliente {
@@ -32,6 +33,8 @@ public class Cliente {
 	
 	@Column(name = "fecha_del_evento", nullable = false,length = 50)
 	private String fecha_del_evento;
+	
+	
 	
 	public Cliente(){
 		

@@ -12,14 +12,18 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 
-import com.fostcraiv2.appDemo.entidad.Capacitacion;
-import com.fostcraiv2.appDemo.entidad.Contrato;
 import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 import com.fostcraiv2.appDemo.entidad.Usuario;
+import com.fostcraiv2.appDemo.entidad.Contrato;
+import com.fostcraiv2.appDemo.entidad.Capacitacion;
 
+@Entity
+@Table(name="recreadores")
 public class Recreador {
 
 	@Id
@@ -27,7 +31,7 @@ public class Recreador {
 	private Long id;
 	
 	@Column(name = "fechaNacimiento")
-	private Date fechaNacimiento;
+	private Date fechaEvento;
 	
 	@Column(name = "edad")
 	private int edad;
@@ -43,11 +47,15 @@ public class Recreador {
 	private Usuario usu;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_capacitacion_fk", referencedColumnName = "idCapacitacion")
+	@JoinColumn(name = "id_capacitacion_fk", referencedColumnName = "id")
 	private Capacitacion id_capacitacion_fk;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_contratacion_fk", referencedColumnName = "idContracion")
+	@JoinColumn(name = "id_contratacion_fk", referencedColumnName = "id")
 	private Contrato id_contratacion_fk;
+
+	
+	
+	
 	
 }
