@@ -1,0 +1,19 @@
+package com.fostcraiv2.appDemo.service;
+
+import java.util.List;
+
+import com.fostcraiv2.appDemo.entidad.Recreador;
+
+public interface RecreadorService {
+
+	public List<Recreador> listarRecreadores();
+	
+	public Recreador guardarRecreador(Recreador recreador);
+	
+	public Recreador encontraRecreadorporId(Long id);
+	
+	public Recreador actualizarRecreador(Recreador recreador);
+	
+	public void eliminarRecreador(Long id);
+	
+}

@@ -8,6 +8,14 @@ public interface ClienteService {
 	
 	public List<Cliente> listarTodosLosClientes();
 	
+	public Cliente guardarCliente(Cliente cliente);
+	
+	public Cliente obtenerClienteporId(Long id);
+	
+	public Cliente actualizarCliente(Cliente cliente);
+	
+	public void eiminarCliente(Long id);
+	
 	
 	
 
