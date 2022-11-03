@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.fostcraiv2.appDemo.entidad.Cliente;
 import com.fostcraiv2.appDemo.service.ClienteService;
 
 @Controller
@@ -19,6 +20,12 @@ public class ClienteControlador {
 		return "clientes";
 	}
 	
+	@GetMapping("Clietnes/nuevo")
+	public String formularioNuevoCliente(Model modelo) {
+		Cliente cliente = new Cliente();
+		modelo.addAttribute("cliente", cliente);
+		return "fromCliente";
+	}
 	
 	
 	

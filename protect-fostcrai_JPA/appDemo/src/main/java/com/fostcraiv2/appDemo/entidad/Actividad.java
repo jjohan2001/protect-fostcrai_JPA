@@ -28,7 +28,11 @@ public class Actividad {
 	
 	@JoinColumn(name = "solicitud_id", unique=true)
 	@OneToOne(cascade=CascadeType.ALL)
-	private SolicitudServicio solicitudes;	
+	private SolicitudServicio solicitudes;
+	
+	public Actividad() {
+		
+	}
 
 	public Actividad(Long id, String actividades, SolicitudServicio solicitudes) {
 		super();

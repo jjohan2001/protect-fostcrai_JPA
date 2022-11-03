@@ -29,6 +29,10 @@ public class Capacitacion {
 	
 	@OneToMany(mappedBy = "id_capacitacion_fk")
 	private List<Recreador> ListSer;
+	
+	public Capacitacion() {
+		
+	}
 
 	public Capacitacion(Long id, Date fechaCapacitacion, String horasCapacitacion, List<Recreador> listSer) {
 		super();
