@@ -40,6 +40,12 @@ public class Actividad {
 		this.actividades = actividades;
 		this.solicitudes = solicitudes;
 	}
+	
+	public Actividad(String actividades, SolicitudServicio solicitudes) {
+		super();
+		this.actividades = actividades;
+		this.solicitudes = solicitudes;
+	}
 
 	public Long getId() {
 		return id;

@@ -13,7 +13,7 @@ import com.fostcraiv2.appDemo.entidad.Actividad;
 import com.fostcraiv2.appDemo.service.ActividadService;
 
 @Controller
-public class ActividadControlador {
+public class ActividadControlador extends Configuracion{
 
 	@Autowired
 	private ActividadService service;
