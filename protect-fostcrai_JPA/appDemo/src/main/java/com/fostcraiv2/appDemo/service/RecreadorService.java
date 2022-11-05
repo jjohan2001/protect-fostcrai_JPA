@@ -10,7 +10,7 @@ public interface RecreadorService {
 	
 	public Recreador guardarRecreador(Recreador recreador);
 	
-	public Recreador encontraRecreadorporId(Long id);
+	public Recreador obtenerRecreadorporId(Long id);
 	
 	public Recreador actualizarRecreador(Recreador recreador);
 	

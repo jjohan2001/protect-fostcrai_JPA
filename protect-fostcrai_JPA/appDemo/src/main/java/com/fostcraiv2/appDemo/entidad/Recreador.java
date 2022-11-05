@@ -31,7 +31,7 @@ public class Recreador {
 	private Long id;
 	
 	@Column(name = "fechaNacimiento")
-	private Date fechaEvento;
+	private Date fechaNacimiento;
 	
 	@Column(name = "edad")
 	private int edad;
@@ -54,8 +54,95 @@ public class Recreador {
 	@JoinColumn(name = "id_contratacion_fk", referencedColumnName = "id")
 	private Contrato id_contratacion_fk;
 
+	public Recreador() {
+		
+	}
+
+	public Recreador(Long id, Date fechaNacimiento, int edad, List<SolicitudServicio> listaSolicitudes, Usuario usu,
+			Capacitacion id_capacitacion_fk, Contrato id_contratacion_fk) {
+		super();
+		this.id = id;
+		this.fechaNacimiento = fechaNacimiento;
+		this.edad = edad;
+		this.listaSolicitudes = listaSolicitudes;
+		this.usu = usu;
+		this.id_capacitacion_fk = id_capacitacion_fk;
+		this.id_contratacion_fk = id_contratacion_fk;
+	}
 	
-	
+	public Recreador( Date fechaNacimiento, int edad, List<SolicitudServicio> listaSolicitudes, Usuario usu,
+			Capacitacion id_capacitacion_fk, Contrato id_contratacion_fk) {
+		super();
+		this.fechaNacimiento = fechaNacimiento;
+		this.edad = edad;
+		this.listaSolicitudes = listaSolicitudes;
+		this.usu = usu;
+		this.id_capacitacion_fk = id_capacitacion_fk;
+		this.id_contratacion_fk = id_contratacion_fk;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public List<SolicitudServicio> getListaSolicitudes() {
+		return listaSolicitudes;
+	}
+
+	public void setListaSolicitudes(List<SolicitudServicio> listaSolicitudes) {
+		this.listaSolicitudes = listaSolicitudes;
+	}
+
+	public Usuario getUsu() {
+		return usu;
+	}
+
+	public void setUsu(Usuario usu) {
+		this.usu = usu;
+	}
+
+	public Capacitacion getId_capacitacion_fk() {
+		return id_capacitacion_fk;
+	}
+
+	public void setId_capacitacion_fk(Capacitacion id_capacitacion_fk) {
+		this.id_capacitacion_fk = id_capacitacion_fk;
+	}
+
+	public Contrato getId_contratacion_fk() {
+		return id_contratacion_fk;
+	}
+
+	public void setId_contratacion_fk(Contrato id_contratacion_fk) {
+		this.id_contratacion_fk = id_contratacion_fk;
+	}
+
+	@Override
+	public String toString() {
+		return "Recreador [id=" + id + ", fechaNacimiento=" + fechaNacimiento + ", edad=" + edad + ", listaSolicitudes="
+				+ listaSolicitudes + ", usu=" + usu + ", id_capacitacion_fk=" + id_capacitacion_fk
+				+ ", id_contratacion_fk=" + id_contratacion_fk + "]";
+	}
 	
 	
 }

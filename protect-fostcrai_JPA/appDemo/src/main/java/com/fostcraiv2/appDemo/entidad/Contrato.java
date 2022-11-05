@@ -30,6 +30,10 @@ public class Contrato {
 	
 	@OneToMany(mappedBy = "id_contratacion_fk")
 	private List<Recreador> ListCon;
+	
+	public Contrato() {
+		
+	}
 
 	public Contrato(Long id, Date fechaEntrada, String horas, String dias, List<Recreador> listCon) {
 		super();

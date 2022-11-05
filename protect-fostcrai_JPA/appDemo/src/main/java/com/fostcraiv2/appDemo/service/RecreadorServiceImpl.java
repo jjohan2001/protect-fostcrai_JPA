@@ -3,10 +3,12 @@ package com.fostcraiv2.appDemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.fostcraiv2.appDemo.entidad.Recreador;
 import com.fostcraiv2.appDemo.respository.RecreadorRepository;
 
+@Service
 public class RecreadorServiceImpl implements RecreadorService{
 
 	@Autowired
@@ -23,7 +25,7 @@ public class RecreadorServiceImpl implements RecreadorService{
 	}
 
 	@Override
-	public Recreador encontraRecreadorporId(Long id) {
+	public Recreador obtenerRecreadorporId(Long id) {
 		return repositorio.findById(id).get();
 	}
 

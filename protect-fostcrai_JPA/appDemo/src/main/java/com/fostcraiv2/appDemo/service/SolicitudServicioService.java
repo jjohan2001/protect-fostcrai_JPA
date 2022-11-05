@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 
+
 public interface SolicitudServicioService {
 
 	public List<SolicitudServicio> listarSolicitudes();

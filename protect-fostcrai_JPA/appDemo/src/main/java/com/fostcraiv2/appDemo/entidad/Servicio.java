@@ -26,6 +26,10 @@ public class Servicio {
 	
 	@OneToMany(mappedBy = "id_servicio_fk")
 	private List<SolicitudServicio> ListSol;;
+	
+	public Servicio() {
+		
+	}
 
 	public Servicio(Long id, String nombreServicio, int valor, List<SolicitudServicio> listSol) {
 		super();

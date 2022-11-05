@@ -3,10 +3,12 @@ package com.fostcraiv2.appDemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.fostcraiv2.appDemo.entidad.Capacitacion;
 import com.fostcraiv2.appDemo.respository.CapacitacionRepository;
 
+@Service
 public class CapacitacionServiceImpl implements CapacitacionService{
 
 	@Autowired
