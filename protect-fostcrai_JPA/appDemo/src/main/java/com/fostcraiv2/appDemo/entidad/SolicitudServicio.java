@@ -41,6 +41,10 @@ public class SolicitudServicio {
 	
 	@ManyToMany(mappedBy = "listaSolicitudes")
 	private List<Recreador> listRec;
+	
+	public SolicitudServicio() {
+		
+	}
 
 	public SolicitudServicio(Long id, Date fechaServicio, Cliente id_cliente_fk, Servicio id_servicio_fk) {
 		super();
