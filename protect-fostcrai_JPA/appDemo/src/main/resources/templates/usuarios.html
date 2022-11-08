@@ -77,8 +77,11 @@
 					<td>
 					<a th:href="@{/usuarios/editar/{id}(id=${usuario.id})}" class="btn btn-info">Editar</a>
 					<a th:href="@{/usuarios/{id}(id=${usuario.id})}" class="btn btn-danger">Eliminar</a>
-					</td>
+					</td
+					>
 				</tr>
+				<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Nuevo cliente</span></a>
+				<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 				<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
 			</tbody>
 		</table>	
