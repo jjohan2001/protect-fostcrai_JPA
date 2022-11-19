@@ -19,7 +19,7 @@ public class ClienteControlador {
 	
 	@GetMapping({"/clintes", "/"})
 	public String listarClientes(Model modelo){
-		modelo.addAttribute("clientes", servicio.listarTodosLosClientes());
+		modelo.addAttribute("clientes", servicio.getAll());
 		return "clientes";
 	}
 	
@@ -32,19 +32,19 @@ public class ClienteControlador {
 	
 	@PostMapping("/clientes")
 	public String guardarCliente(@ModelAttribute("cliente") Cliente cliente) {
-		servicio.guardarCliente(cliente);
+		servicio.save(cliente);
 		return "redirect:cllientes";
 	}
 	
 	@GetMapping("Clietnes/editar/{id}")
 	public String formularioEditarCliente(@PathVariable Long id, Model modelo) {
-		modelo.addAttribute("cliente", servicio.obtenerClienteporId(id));
+		modelo.addAttribute("cliente", servicio.get(id));
 		return "editar_cliente";
 	}
 	
 	@PostMapping("/clientes/{id}")
 	public String actualizarCliente(@PathVariable Long id, @ModelAttribute("cliente") Cliente cliente, Model modelo) {
-		Cliente clienteExistente = servicio.obtenerClienteporId(id);
+		Cliente clienteExistente = servicio.get(id);
 		clienteExistente.setId(id);
 		clienteExistente.setNombre(cliente.getNombre());
 		clienteExistente.setApellido(cliente.getApellido());
@@ -54,13 +54,13 @@ public class ClienteControlador {
 		clienteExistente.setDireccion(cliente.getDireccion());
 		clienteExistente.setFecha_del_evento(cliente.getFecha_del_evento());
 		
-		servicio.actualizarCliente(clienteExistente);
+		servicio.save(clienteExistente);
 		return "redirect:cllientes";
 	}
 	
 	@GetMapping("/clientes/{id}")
 	public String eliminarCliente(@PathVariable Long id) {
-		servicio.eiminarCliente(id);
+		servicio.delete(id);
 		return "redirect:cllientes";
 	}
 }

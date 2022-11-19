@@ -1,42 +1,22 @@
 package com.fostcraiv2.appDemo.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import com.fostcraiv2.appDemo.Genericos.GenericServiceImpl;
+import com.fostcraiv2.appDemo.dao.Clientedao;
 import com.fostcraiv2.appDemo.entidad.Cliente;
-import com.fostcraiv2.appDemo.respository.ClienteRepository;
+
 
 @Service
-public class ClienteServiceImpl implements ClienteService{
+public class ClienteServiceImpl  extends GenericServiceImpl<Cliente, Long> implements ClienteService{
 
 	@Autowired
-	private ClienteRepository repositorio;
+	private Clientedao clientedao;
 	
 	@Override
-	public List<Cliente> listarTodosLosClientes() {
-		return repositorio.findAll();
+	public CrudRepository<Cliente, Long> getDao(){
+		return clientedao;
 	}
-
-	@Override
-	public Cliente guardarCliente(Cliente cliente) {
-		return repositorio.save(cliente);
-	}
-
-	@Override
-	public Cliente obtenerClienteporId(Long id) {
-		return repositorio.findById(id).get();
-	}
-
-	@Override
-	public Cliente actualizarCliente(Cliente cliente) {
-		return repositorio.save(cliente);
-	}
-
-	@Override
-	public void eiminarCliente(Long id) {
-		repositorio.deleteById(id);
-	}
-
 }
