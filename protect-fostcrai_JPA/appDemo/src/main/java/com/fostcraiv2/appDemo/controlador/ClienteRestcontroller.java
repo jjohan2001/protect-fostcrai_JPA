@@ -17,7 +17,7 @@ import com.fostcraiv2.appDemo.entidad.Cliente;
 import com.fostcraiv2.appDemo.service.ClienteService;
 
 @RestController
-@RequestMapping(value = "/api/prueba/")
+@RequestMapping(value = "/api/cliente/")
 @CrossOrigin("*")
 public class ClienteRestcontroller {
 
