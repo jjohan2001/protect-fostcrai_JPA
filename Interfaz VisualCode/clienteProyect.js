@@ -161,6 +161,7 @@ var app = {
         $('#fechaEvento').val(data.fechaEvento);
     },
     cleanForm: function(){
+        $('#id').val('');
         $('#nombre').val('');
         $('#apellido').val('');
         $('#cedula').val('');
