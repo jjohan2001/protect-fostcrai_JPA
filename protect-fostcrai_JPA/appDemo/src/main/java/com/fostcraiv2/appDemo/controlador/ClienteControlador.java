@@ -52,7 +52,7 @@ public class ClienteControlador {
 		clienteExistente.setCelular(cliente.getCelular());
 		clienteExistente.setCorreo(cliente.getCorreo());
 		clienteExistente.setDireccion(cliente.getDireccion());
-		clienteExistente.setFecha_del_evento(cliente.getFecha_del_evento());
+		clienteExistente.setFechaEvento(cliente.getFechaEvento());
 		
 		servicio.save(clienteExistente);
 		return "redirect:cllientes";

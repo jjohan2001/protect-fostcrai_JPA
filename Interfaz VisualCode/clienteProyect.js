@@ -10,11 +10,11 @@ var app = {
             
             const nombres = document.getElementById("nombre").value;
             const apellidos = document.getElementById("apellido").value;
-            const correo = document.getElementById("cedula").value;
-            const ciudad = document.getElementById("celular").value;
-            const fecha = document.getElementById("correo").value;
-            const ocupacion = document.getElementById("direccion").value;
-            const telefono = document.getElementById("fecha_del_evento").value;
+            const cedula = document.getElementById("cedula").value;
+            const celular = document.getElementById("celular").value;
+            const correo = document.getElementById("correo").value;
+            const direccion = document.getElementById("direccion").value;
+            const fechaEvento = document.getElementById("fechaEvento").value;
 
 
             if (nombres =='') {
@@ -22,14 +22,14 @@ var app = {
                     $("#validacionN").html("<span style='color:red'>Complete el campo</span>").fadeOut(4000);
                 },1000);
 
-                $('#nombres').focus();
+                $('#nombre').focus();
                 return false;
             }else if (apellidos =='') {
                 setTimeout(function(){
                     $("#validacionA").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
                 },1000);
 
-                $('#apellidos').focus();
+                $('#apellido').focus();
                 return false;
             }else if (correo =='') {
                 setTimeout(function(){
@@ -38,40 +38,33 @@ var app = {
 
                 $('#correo').focus();
                 return false;
-            }else if (ciudad =='') {
+            }else if (cedula =='') {
                 setTimeout(function(){
                     $("#validacionCi").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
                 },1000);
 
-                $('#ciudad').focus();
+                $('#cedula').focus();
                 return false;
-            }else if (fecha =='') {
+            }else if (fechaEvento =='') {
                 setTimeout(function(){
                     $("#validacionF").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
                 },1000);
 
-                $('#fecha').focus();
+                $('#fechaEvento').focus();
                 return false;
-            }else if(fecha < "1957-01-01" && fecha > "2004-12-31"){
-                setTimeout(function(){
-                    $("#validacionF").html("<span style='color:red'>Fecha fuera de rango</span>").fadeOut(2000);
-                },1000);
-
-                $('#fecha').focus();
-                return false;
-            }else if (ocupacion =='') {
+            }else if (celular =='') {
                 setTimeout(function(){
                     $("#validacionO").html("<span style='color:red'>Edad</span>").fadeOut(2000);
                 },1000);
 
-                $('#ocupacion').focus();
+                $('#celular').focus();
                 return false;
-            }else if (telefono =='') {
+            }else if (direccion =='') {
                 setTimeout(function(){
                     $("#validacionT").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
                 },1000);
 
-                $('#telefono').focus();
+                $('#direccion').focus();
                 return false;
             }
             app.save({
@@ -82,7 +75,7 @@ var app = {
                 celular : $('#celular').val(),
                 correo : $('#correo').val(),
                 direccion : $('#direccion').val(),
-                fecha : $('#fecha_del_evento').val()
+                fechaEvento : $('#fechaEvento').val()
             });
         });
     },
@@ -103,11 +96,11 @@ var app = {
                 {data : "celular"},
                 {data : "correo"},
                 {data : "direccion"},
-                {data : "fecha_del_evento"}
+                {data : "fechaEvento"}
             ],
             buttons: [
                 {
-                    text : 'crear',
+                    text : 'Crear',
                     action : function(e, dt, node, config){
                         app.cleanForm();
                         $('#clienteModal').modal();
@@ -159,23 +152,22 @@ var app = {
     },
     setDataToModal : function(data){
         $('#id').val(data.id);
-        $('#nombre').val(data.nombres);
-        $('#apellido').val(data.apellidos);
+        $('#nombre').val(data.nombre);
+        $('#apellido').val(data.apellido);
         $('#cedula').val(data.cedula);
         $('#celular').val(data.celular);
         $('#correo').val(data.correo);
         $('#direccion').val(data.direccion);
-        $('#fecha_del_evento').val(data.fecha);
+        $('#fechaEvento').val(data.fechaEvento);
     },
     cleanForm: function(){
-        $('#id').val('');
         $('#nombre').val('');
         $('#apellido').val('');
         $('#cedula').val('');
         $('#celular').val('');
         $('#correo').val('');
         $('#direccion').val('');
-        $('#fecha_del_evento').val('');
+        $('#fechaEvento').val('');
     },
     save : function(data) {
         $.ajax({

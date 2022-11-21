@@ -1,11 +1,18 @@
 package com.fostcraiv2.appDemo.entidad;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+    
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 
 @Entity
@@ -16,26 +23,28 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "nombre", nullable = false,length = 50)
+	@Column(name = "nombre", length = 50)
 	private String nombre;
 	
-	@Column(name = "apellido", nullable = false,length = 50)
+	@Column(name = "apellido",length = 50)
 	private String apellido;
 	
-	@Column(name = "cedula", nullable = true, length = 50)
+	@Column(name = "cedula", length = 50)
 	private String cedula;
 	
-	@Column(name = "celular", nullable = false,length = 50)
+	@Column(name = "celular", length = 50)
 	private String celular;
 	
-	@Column(name = "correo", nullable = false,length = 50,unique = true)
+	@Column(name = "correo", length = 50,unique = true)
 	private String correo;
 	
-	@Column(name = "direccion", nullable = false,length = 50)
+	@Column(name = "direccion",length = 50)
 	private String direccion;
 	
-	@Column(name = "fecha_del_evento", nullable = false,length = 50)
-	private String fecha_del_evento;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name = "fechaEvento")
+	private Date fechaEvento;
 	
 	
 	
@@ -46,7 +55,7 @@ public class Cliente {
 
 
 	public Cliente(Long id, String nombre, String apellido, String cedula, String celular, String correo,
-			String direccion, String fecha_del_evento) {
+			String direccion, Date fechaEvento) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -55,11 +64,11 @@ public class Cliente {
 		this.celular = celular;
 		this.correo = correo;
 		this.direccion = direccion;
-		this.fecha_del_evento = fecha_del_evento;
+		this.fechaEvento = fechaEvento;
 	}
 
 	public Cliente(String nombre, String apellido, String cedula, String celular, String correo,
-			String direccion, String fecha_del_evento) {
+			String direccion, Date fechaEvento) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -67,7 +76,7 @@ public class Cliente {
 		this.celular = celular;
 		this.correo = correo;
 		this.direccion = direccion;
-		this.fecha_del_evento = fecha_del_evento;
+		this.fechaEvento = fechaEvento;
 	}
 
 
@@ -156,14 +165,14 @@ public class Cliente {
 
 
 
-	public String getFecha_del_evento() {
-		return fecha_del_evento;
+	public Date getFechaEvento() {
+		return fechaEvento;
 	}
 
 
 
-	public void setFecha_del_evento(String fecha_del_evento) {
-		this.fecha_del_evento = fecha_del_evento;
+	public void setFechaEvento(Date fechaEvento) {
+		this.fechaEvento = fechaEvento;
 	}
 
 
@@ -171,10 +180,9 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula
-				+ ", celular=" + celular + ", correo=" + correo + ", direccion=" + direccion + ", fecha_del_evento="
-				+ fecha_del_evento + "]";
-	}
-	
+				+ ", celular=" + celular + ", correo=" + correo + ", direccion=" + direccion + ", fechaEvento="
+				+ fechaEvento + "]";
+	}	
 	
 	
 }

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css'>
     <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css'>
     <link rel='stylesheet' type='text/css' href='https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css'>
@@ -48,7 +47,7 @@
                           <div class="form-group">
                           <label for="id">id</label>
                           <input type="text" class="form-control" id="id" placeholder="Ingrese su cedula" required>
-                          <label for="" id="validacionC"></label>
+                          <input type="hidden" class="form-control" id="id">
                         </div>
                           <label for="nombres">Nombres</label>
                           <input type="text" class="form-control" id="nombre" placeholder="Ingrese sus nombres" required>
@@ -75,13 +74,13 @@
                             <label for="" id="validacionO"></label>
                         </div>
                         <div class="form-group">
-                          <label for="direcion">Direccion</label>
-                          <input type="text" class="form-control" id="direcion" placeholder="Ingrese su dirrecion" required>
+                          <label for="direccion">Direccion</label>
+                          <input type="text" class="form-control" id="direccion" placeholder="Ingrese su dirrecion">
                           <label for="" id="validacionT"></label>
                         </div>
                         <div class="form-group">
-                            <label for="fecha">Fecha de evento</label>
-                            <input type="date" class="form-control" id="fecha_del_evento" placeholder="Ingrese Fecha" required>
+                            <label for="fechaEvento">Fecha de evento</label>
+                            <input type="date" class="form-control" id="fechaEvento" placeholder="Ingrese Fecha" required>
                             <label for="" id="validacionT"></label>
                           </div>
                     </form>
