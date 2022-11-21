@@ -7,15 +7,14 @@ var app = {
         
 
         $('#save').click(function(){
-
-            const id = document.getElementById("id").value;
-            const nombres = document.getElementById("nombres").value;
-            const apellidos = document.getElementById("apellidos").value;
-            const correo = document.getElementById("correo").value;
-            const ciudad = document.getElementById("ciudad").value;
-            const fecha = document.getElementById("fecha").value;
-            const ocupacion = document.getElementById("ocupacion").value;
-            const telefono = document.getElementById("telefono").value;
+            
+            const nombres = document.getElementById("nombre").value;
+            const apellidos = document.getElementById("apellido").value;
+            const correo = document.getElementById("cedula").value;
+            const ciudad = document.getElementById("celular").value;
+            const fecha = document.getElementById("correo").value;
+            const ocupacion = document.getElementById("direccion").value;
+            const telefono = document.getElementById("fecha_del_evento").value;
 
 
             if (nombres =='') {
@@ -170,14 +169,13 @@ var app = {
     },
     cleanForm: function(){
         $('#id').val('');
+        $('#nombre').val('');
+        $('#apellido').val('');
         $('#cedula').val('');
-        $('#nombres').val('');
-        $('#apellidos').val('');
+        $('#celular').val('');
         $('#correo').val('');
-        $('#ciudad').val('');
-        $('#fecha').val('');
-        $('#ocupacion').val('');
-        $('#telefono').val('');
+        $('#direccion').val('');
+        $('#fecha_del_evento').val('');
     },
     save : function(data) {
         $.ajax({
