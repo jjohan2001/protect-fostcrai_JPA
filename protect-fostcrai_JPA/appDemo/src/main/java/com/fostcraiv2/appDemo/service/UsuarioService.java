@@ -2,9 +2,10 @@ package com.fostcraiv2.appDemo.service;
 
 import java.util.List;
 
+import com.fostcraiv2.appDemo.Genericos.GenericServiceAPI;
 import com.fostcraiv2.appDemo.entidad.Usuario;
 
-public interface UsuarioService {
+public interface UsuarioService extends GenericServiceAPI<Usuario, Long>{
 
 	public List<Usuario> listarTodosLosUsuarios();
 	

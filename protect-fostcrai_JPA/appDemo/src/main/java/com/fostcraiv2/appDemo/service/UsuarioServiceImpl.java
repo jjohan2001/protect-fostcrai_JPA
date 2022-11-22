@@ -3,14 +3,20 @@ package com.fostcraiv2.appDemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import com.fostcraiv2.appDemo.Genericos.GenericServiceImpl;
+import com.fostcraiv2.appDemo.dao.Usuariodao;
 import com.fostcraiv2.appDemo.entidad.Usuario;
 import com.fostcraiv2.appDemo.respository.UsuarioRepository;
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Long> implements UsuarioService {
 
+	@Autowired
+	private Usuariodao usuariodao;
+	
 	@Autowired
 	private UsuarioRepository repositorio;
 
@@ -38,5 +44,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public void eliminarUsuario(Long id) {
 		repositorio.deleteById(id);
 
+	}
+
+	@Override
+	public CrudRepository<Usuario, Long> getDao() {
+		return usuariodao;
 	}
 }
