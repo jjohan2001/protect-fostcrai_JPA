@@ -2,9 +2,10 @@ package com.fostcraiv2.appDemo.service;
 
 import java.util.List;
 
+import com.fostcraiv2.appDemo.Genericos.GenericServiceAPI;
 import com.fostcraiv2.appDemo.entidad.Contrato;
 
-public interface ContratoService {
+public interface ContratoService extends GenericServiceAPI<Contrato, Long>{
 
 	public List<Contrato> listarContratos();
 	

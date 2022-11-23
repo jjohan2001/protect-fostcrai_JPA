@@ -3,14 +3,20 @@ package com.fostcraiv2.appDemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import com.fostcraiv2.appDemo.Genericos.GenericServiceImpl;
+import com.fostcraiv2.appDemo.dao.SolicitudServiciodao;
 import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 import com.fostcraiv2.appDemo.respository.SolicitudServicioRepository;
 
 @Service
-public class SolcitiduServicioServiceImpl implements SolicitudServicioService{
+public class SolcitiduServicioServiceImpl extends GenericServiceImpl<SolicitudServicio, Long> implements SolicitudServicioService{
 
+	@Autowired
+	private SolicitudServiciodao solicituddao;
+	
 	@Autowired
 	private SolicitudServicioRepository repositorio;
 	
@@ -38,6 +44,11 @@ public class SolcitiduServicioServiceImpl implements SolicitudServicioService{
 	public void eliminarsolicitud(Long id) {
 		repositorio.deleteById(id);
 		
+	}
+
+	@Override
+	public CrudRepository<SolicitudServicio, Long> getDao() {
+		return solicituddao;
 	}
 
 	

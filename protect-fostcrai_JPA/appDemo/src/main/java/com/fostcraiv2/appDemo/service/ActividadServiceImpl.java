@@ -3,14 +3,20 @@ package com.fostcraiv2.appDemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import com.fostcraiv2.appDemo.Genericos.GenericServiceImpl;
+import com.fostcraiv2.appDemo.dao.Actividadao;
 import com.fostcraiv2.appDemo.entidad.Actividad;
 import com.fostcraiv2.appDemo.respository.ActividadRepository;
 
 @Service
-public class ActividadServiceImpl implements ActividadService{
+public class ActividadServiceImpl extends GenericServiceImpl<Actividad, Long> implements ActividadService{
 
+	@Autowired
+	private Actividadao actividadao;
+	
 	@Autowired
 	private ActividadRepository repositorio;
 	
@@ -38,6 +44,11 @@ public class ActividadServiceImpl implements ActividadService{
 	@Override
 	public Actividad actualizarActividad(Actividad actividad) {
 		return repositorio.save(actividad);
+	}
+
+	@Override
+	public CrudRepository<Actividad, Long> getDao() {
+		return actividadao;
 	}
 
 	

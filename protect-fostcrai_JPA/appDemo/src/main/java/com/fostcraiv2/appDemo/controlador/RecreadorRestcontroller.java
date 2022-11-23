@@ -13,45 +13,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fostcraiv2.appDemo.entidad.Usuario;
-import com.fostcraiv2.appDemo.service.UsuarioService;
+import com.fostcraiv2.appDemo.entidad.Recreador;
+import com.fostcraiv2.appDemo.service.RecreadorService;
 
 @RestController
-@RequestMapping(value = "/api/usuarios/")
+@RequestMapping(value = "/api/recreadores/")
 @CrossOrigin("*")
-public class UsuarioRestController {
-	
+public class RecreadorRestcontroller {
+
 	@Autowired
-	private UsuarioService service;
+	private RecreadorService  service;
 	
 	@GetMapping(value = "/all")
-	public List<Usuario> getAll(){
+	public List<Recreador> getALL(){
 		return service.getAll();
 	}
 	
 	@GetMapping(value = "/find{id}")
-	public Usuario find(@PathVariable Long id) {
+	public Recreador find(@PathVariable Long id) {
 		return service.get(id);
 	}
 	
-	
 	@PostMapping(value = "/save")
-	public ResponseEntity<Usuario> save(@RequestBody Usuario usuario){
-		Usuario obj = service.save(usuario);
-		return new ResponseEntity<Usuario>(obj, HttpStatus.OK);
+	public ResponseEntity<Recreador> save(@RequestBody Recreador recreador){
+		Recreador obj = service.save(recreador);
+		return new ResponseEntity<Recreador>(recreador, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/delete/{id}")
-	public ResponseEntity<Usuario> delete(@PathVariable Long id){
-		Usuario usuario = service.get(id);
-		if(usuario != null) {
+	@GetMapping(value = "/delete")
+	public ResponseEntity<Recreador> delete(@PathVariable Long id){
+		Recreador recreador = service.get(id);
+		if(recreador != null) {
 			service.delete(id);
 		}else {
-			return new ResponseEntity<Usuario> (usuario, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<Recreador> (recreador, HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+		return new ResponseEntity<Recreador>(recreador, HttpStatus.OK);
 	}
-	
 	
 	
 }

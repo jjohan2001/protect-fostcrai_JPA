@@ -13,45 +13,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fostcraiv2.appDemo.entidad.Usuario;
-import com.fostcraiv2.appDemo.service.UsuarioService;
+import com.fostcraiv2.appDemo.entidad.Servicio;
+import com.fostcraiv2.appDemo.service.ServicioService;
 
 @RestController
-@RequestMapping(value = "/api/usuarios/")
+@RequestMapping(value = "/api/servicio/")
 @CrossOrigin("*")
-public class UsuarioRestController {
-	
+public class ServicioRestcontroller {
+
 	@Autowired
-	private UsuarioService service;
+	private ServicioService service;
 	
 	@GetMapping(value = "/all")
-	public List<Usuario> getAll(){
+	public List<Servicio> getALL(){
 		return service.getAll();
 	}
 	
 	@GetMapping(value = "/find{id}")
-	public Usuario find(@PathVariable Long id) {
+	public Servicio find(@PathVariable Long id){
 		return service.get(id);
 	}
 	
-	
 	@PostMapping(value = "/save")
-	public ResponseEntity<Usuario> save(@RequestBody Usuario usuario){
-		Usuario obj = service.save(usuario);
-		return new ResponseEntity<Usuario>(obj, HttpStatus.OK);
+	public ResponseEntity<Servicio> save(@RequestBody Servicio servicio){
+		Servicio obj = service.save(servicio);
+		return new ResponseEntity<Servicio>(servicio, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/delete/{id}")
-	public ResponseEntity<Usuario> delete(@PathVariable Long id){
-		Usuario usuario = service.get(id);
-		if(usuario != null) {
+	@GetMapping(value = "/delete{id}")
+	public ResponseEntity<Servicio> delete(@PathVariable Long id){
+		Servicio servicio = service.get(id);
+		if(servicio != null) {
 			service.delete(id);
 		}else {
-			return new ResponseEntity<Usuario> (usuario, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<Servicio>(servicio, HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+		return new ResponseEntity<Servicio>(servicio, HttpStatus.OK);
 	}
-	
-	
 	
 }
