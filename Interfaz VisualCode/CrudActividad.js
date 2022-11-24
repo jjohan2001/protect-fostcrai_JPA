@@ -1,5 +1,5 @@
 var app = {
-    backend: 'http://localhost:8080/api/actividad',
+    backend: 'http://localhost:8080/api/actividades',
     table : null,
     init: function(){
         app.initDatatable('#actividades');
@@ -21,14 +21,14 @@ var app = {
                 return false;
             }else if (horas =='') {
                 setTimeout(function(){
-                    $("#validacionA").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
+                    $("#validacionH").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
                 },1000);
 
                 $('#horas').focus();
                 return false;
             }else if (solicitud =='') {
                 setTimeout(function(){
-                    $("#validacionE").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
+                    $("#validacionS").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
                 },1000);
 
                 $('#solicitud_id').focus();
@@ -62,7 +62,7 @@ var app = {
                     text : 'Crear',
                     action : function(e, dt, node, config){
                         app.cleanForm();
-                        $('#clienteModal').modal();
+                        $('#actividadModal').modal();
                     }
                 },
                 {
@@ -70,7 +70,7 @@ var app = {
                     action : function(e, dt, node, config){
                         var data = dt.rows('.table-active').data()[0];
                         app.setDataToModal(data);
-                        $('#clienteModal').modal();
+                        $('#actividadModal').modal();
                     }
                 },
                 {
@@ -100,7 +100,7 @@ var app = {
             ]
         });
 
-        $('#clientes tbody').on('click', 'tr', function(){
+        $('#actividades tbody').on('click', 'tr', function(){
             if($(this).hasClass('table-active')){
                $(this).removeClass('table-active');
             }else{
@@ -133,7 +133,7 @@ var app = {
                     $("#msg").text('Se guardó la persona correctamente').fadeOut(5000);
                 },100);
                 $("#msg").show();
-                $('#clienteModal').modal('hide');
+                $('#actividadModal').modal('hide');
                 app.table.ajax.reload();
             },
             error : function(error) {

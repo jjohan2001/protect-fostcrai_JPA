@@ -1,89 +1,35 @@
 var app = {
-    backend: 'http://localhost:8080/api/usuarios',
+    backend: 'http://localhost:8080/api/capacitaciones',
     table : null,
     init: function(){
-        app.initDatatable('#usuarios');
+        app.initDatatable('#capacitaciones');
 
         
 
         $('#save').click(function(){
             
-            const nombres = document.getElementById("nombre").value;
-            const apellidos = document.getElementById("apellido").value;
-            const cedula = document.getElementById("cedula").value;
-            const celular = document.getElementById("celular").value;
-            const correo = document.getElementById("correo").value;
-            const password = document.getElementById("password").value;
-            const rol = document.getElementById("rol").value;
+            const fecha = document.getElementById("fecha").value;
+            const horas = document.getElementById("horas").value;
 
-
-            if (nombres =='') {
+            if (fecha =='') {
                 setTimeout(function(){
-                    $("#validacionN").html("<span style='color:red'>Complete el campo</span>").fadeOut(4000);
+                    $("#validacionF").html("<span style='color:red'>Complete el campo</span>").fadeOut(4000);
                 },1000);
 
-                $('#nombre').focus();
+                $('#fecha').focus();
                 return false;
-            }else if (apellidos =='') {
+            }else if (horas =='') {
                 setTimeout(function(){
                     $("#validacionA").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
                 },1000);
 
-                $('#apellido').focus();
-                return false;
-            }else if (correo =='') {
-                setTimeout(function(){
-                    $("#validacionE").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
-                },1000);
-
-                $('#correo').focus();
-                return false;
-            }else if (cedula =='') {
-                setTimeout(function(){
-                    $("#validacionCi").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
-                },1000);
-
-                $('#cedula').focus();
-                return false;
-            }else if (password =='') {
-                setTimeout(function(){
-                    $("#validacionP").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
-                },1000);
-
-                $('#password').focus();
-                return false;
-            }else if (celular =='') {
-                setTimeout(function(){
-                    $("#validacionO").html("<span style='color:red'>Ingrese un Celular/span>").fadeOut(2000);
-                },1000);
-
-                $('#celular').focus();
-                return false;
-            }else if (direccion =='') {
-                setTimeout(function(){
-                    $("#validacionT").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
-                },1000);
-
-                $('#direccion').focus();
-                return false;
-            }else if(rol == ''){
-                setTimeout(function(){
-                    $("#validacionR").html("<span style='color:red'>Ingre Rol</span>").fadeOut(2000);
-                },1000);
-
-                $('#rol').focus();
+                $('#horas').focus();
                 return false;
             }
             app.save({
                 id :$('#id').val(),
-                nombre : $('#nombre').val(),
-                apellido: $('#apellido').val(),
-                cedula : $('#cedula').val(),
-                celular : $('#celular').val(),
-                correo : $('#correo').val(),
-                direccion : $('#direccion').val(),
-                password : $('#password').val(),
-                rol : $('#rol').val()
+                fecha : $('#fecha').val(),
+                horas : $('#horas').val(),
             });
         });
     },
@@ -98,21 +44,15 @@ var app = {
             dom: 'Bfrtip',
             columns : [
                 {data: "id"},
-                {data : "nombre"},
-                {data : "apellido"},
-                {data : "cedula"},
-                {data : "celular"},
-                {data : "correo"},
-                {data : "direccion"},
-                {data : "password"},
-                {data : "rol"}
+                {data : "fecha_capacitacion"},
+                {data : "horas_capacitacion"}
             ],
             buttons: [
                 {
                     text : 'Crear',
                     action : function(e, dt, node, config){
                         app.cleanForm();
-                        $('#usuarioModal').modal();
+                        $('#capacitacionModal').modal();
                     }
                 },
                 {
@@ -120,7 +60,7 @@ var app = {
                     action : function(e, dt, node, config){
                         var data = dt.rows('.table-active').data()[0];
                         app.setDataToModal(data);
-                        $('#usuarioModal').modal();
+                        $('#capacitacionModal').modal();
                     }
                 },
                 {
@@ -150,7 +90,7 @@ var app = {
             ]
         });
 
-        $('#usuarios tbody').on('click', 'tr', function(){
+        $('#capacitaciones tbody').on('click', 'tr', function(){
             if($(this).hasClass('table-active')){
                $(this).removeClass('table-active');
             }else{
@@ -161,25 +101,13 @@ var app = {
     },
     setDataToModal : function(data){
         $('#id').val(data.id);
-        $('#nombre').val(data.nombre);
-        $('#apellido').val(data.apellido);
-        $('#cedula').val(data.cedula);
-        $('#celular').val(data.celular);
-        $('#correo').val(data.correo);
-        $('#direccion').val(data.direccion);
-        $('#password').val(data.password);
-        $('#rol').val(data.rol);
+        $('#fecha').val(data.fecha);
+        $('#horas').val(data.horas);
     },
     cleanForm: function(){
         $('#id').val('');
-        $('#nombre').val('');
-        $('#apellido').val('');
-        $('#cedula').val('');
-        $('#celular').val('');
-        $('#correo').val('');
-        $('#direccion').val('');
-        $('#password').val('');
-        $('#rol').val('');
+        $('#fecha').val('');
+        $('#horas').val('');
     },
     save : function(data) {
         $.ajax({
@@ -193,7 +121,7 @@ var app = {
                     $("#msg").text('Se guardó la persona correctamente').fadeOut(5000);
                 },100);
                 $("#msg").show();
-                $('#usuarioModal').modal('hide');
+                $('#capacitacionModal').modal('hide');
                 app.table.ajax.reload();
             },
             error : function(error) {
