@@ -17,7 +17,7 @@ import com.fostcraiv2.appDemo.entidad.Actividad;
 import com.fostcraiv2.appDemo.service.ActividadService;
 
 @RestController
-@RequestMapping(value = "/api/actividad/")
+@RequestMapping(value = "/api/actividades/")
 @CrossOrigin("*")
 public class ActividadRestcontroller {
 

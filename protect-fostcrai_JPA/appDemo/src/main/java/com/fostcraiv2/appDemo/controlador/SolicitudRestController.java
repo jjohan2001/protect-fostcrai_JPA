@@ -17,7 +17,7 @@ import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 import com.fostcraiv2.appDemo.service.SolicitudServicioService;
 
 @RestController
-@RequestMapping(value = "/api/solicitud/")
+@RequestMapping(value = "/api/solicitudes/")
 @CrossOrigin("*")
 public class SolicitudRestController {
 

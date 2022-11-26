@@ -73,7 +73,6 @@ var app = {
                 {data : "edad"},
                 {data : "fecha_nacimiento"},
                 {data : "id_capacitacion_fk"},
-                {data : "id_contratacion_fk"},
                 {data : "id_usuario_fk"}
             ],
             buttons: [

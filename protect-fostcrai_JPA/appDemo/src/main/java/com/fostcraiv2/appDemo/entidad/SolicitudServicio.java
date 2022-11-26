@@ -28,9 +28,6 @@ public class SolicitudServicio {
 	@Column(name = "fechaServicio")
 	private Date fechaServicio;
 	
-	@Column(name = "servicio")
-	private int servicio;
-	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente_fk", referencedColumnName = "id")
 	private Cliente id_cliente_fk;

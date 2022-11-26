@@ -3,12 +3,15 @@ package com.fostcraiv2.appDemo.entidad;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,20 +31,28 @@ public class Contrato {
 	@Column(name = "dias")
 	private String dias;
 	
-	@OneToMany(mappedBy = "id_contratacion_fk")
-	private List<Recreador> ListCon;
+	@JoinColumn(name = "id_recreador_fk", unique=true)
+	@OneToOne(cascade=CascadeType.ALL)
+	private Recreador id_recreador_fk;
 	
 	public Contrato() {
 		
 	}
 
-	public Contrato(Long id, Date fechaEntrada, String horas, String dias, List<Recreador> listCon) {
+	public Contrato(Long id, Date fechaEntrada, String horas, String dias, Recreador id_recreador_fk) {
 		super();
 		this.id = id;
 		this.fechaEntrada = fechaEntrada;
 		this.horas = horas;
 		this.dias = dias;
-		ListCon = listCon;
+		this.id_recreador_fk = id_recreador_fk;
+	}
+	public Contrato(Date fechaEntrada, String horas, String dias, Recreador id_recreador_fk) {
+		super();
+		this.fechaEntrada = fechaEntrada;
+		this.horas = horas;
+		this.dias = dias;
+		this.id_recreador_fk = id_recreador_fk;
 	}
 
 	public Long getId() {
@@ -76,18 +87,19 @@ public class Contrato {
 		this.dias = dias;
 	}
 
-	public List<Recreador> getListCon() {
-		return ListCon;
+	public Recreador getId_recreador_fk() {
+		return id_recreador_fk;
 	}
 
-	public void setListCon(List<Recreador> listCon) {
-		ListCon = listCon;
+	public void setId_recreador_fk(Recreador id_recreador_fk) {
+		this.id_recreador_fk = id_recreador_fk;
 	}
 
 	@Override
 	public String toString() {
 		return "Contrato [id=" + id + ", fechaEntrada=" + fechaEntrada + ", horas=" + horas + ", dias=" + dias
-				+ ", ListCon=" + ListCon + "]";
+				+ ", id_recreador_fk=" + id_recreador_fk + "]";
 	}
+	
 
 }
