@@ -36,9 +36,9 @@ var app = {
             }
             app.save({
                 id :$('#id').val(),
-                nombre : $('#actividad').val(),
-                apellido: $('#horas').val(),
-                cedula : $('#solicitud_id').val(),
+                actividad : $('#actividad').val(),
+                horas: $('#horas').val(),
+                solicitud : $('#solicitud_id').val(),
             });
         });
     },
@@ -53,7 +53,7 @@ var app = {
             dom: 'Bfrtip',
             columns : [
                 {data: "id"},
-                {data : "actividad"},
+                {data : "actividades"},
                 {data : "horas"},
                 {data : "solicitud_id"}
             ],

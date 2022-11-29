@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 
 @Entity
@@ -23,9 +24,10 @@ public class Actividad {
 	@Column(name = "actividades", length = 50)
 	private String actividades;
 	
-	@Column(name = "horas", length = 50)
-	private String horas;	
+	@Column(name = "horas")
+	private int horas;	
 	
+	@JsonIgnore
 	@JoinColumn(name = "solicitud_id", unique=true)
 	@OneToOne(cascade=CascadeType.ALL)
 	private SolicitudServicio solicitudes;
