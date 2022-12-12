@@ -29,7 +29,7 @@ public class CapacitacionRestcontroller {
 		return serviceC.getAll();
 	}
 	
-	@GetMapping(value = "/ind{id}")
+	@GetMapping(value = "/find{id}")
 	public Capacitacion find(@PathVariable Long id) {
 		return serviceC.get(id);
 	}
@@ -40,7 +40,7 @@ public class CapacitacionRestcontroller {
 		return new ResponseEntity<Capacitacion>(obj, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/delete{id}")
+	@GetMapping(value = "/delete/{id}")
 	public ResponseEntity<Capacitacion> delete(@PathVariable Long id){
 		Capacitacion capacitacion = serviceC.get(id);
 		if(capacitacion != null) {

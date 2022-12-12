@@ -1,5 +1,5 @@
 var app = {
-    backend: 'http://localhost:8080/api/capacitaciones',
+    backend: 'http://localhost:8080/api/capacitacion',
     table : null,
     init: function(){
         app.initDatatable('#capacitaciones');
@@ -101,8 +101,8 @@ var app = {
     },
     setDataToModal : function(data){
         $('#id').val(data.id);
-        $('#fecha').val(data.fecha);
-        $('#horas').val(data.horas);
+        $('#fecha').val(data.fecha_capacitacion);
+        $('#horas').val(data.horas_capacitacion);
     },
     cleanForm: function(){
         $('#id').val('');

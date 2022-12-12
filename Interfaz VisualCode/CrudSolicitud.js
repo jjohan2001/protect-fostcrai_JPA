@@ -111,9 +111,9 @@ var app = {
     },
     setDataToModal : function(data){
         $('#id').val(data.id);
-        $('#servicio').val(data.servicio);
-        $('#fecha').val(data.fecha);
-        $('#cliente').val(data.cliente);
+        $('#servicio').val(data.id_servicio_fk);
+        $('#fecha').val(data.fecha_servicio);
+        $('#cliente').val(data.id_cliente_fk);
     },
     cleanForm: function(){
         $('#id').val('');

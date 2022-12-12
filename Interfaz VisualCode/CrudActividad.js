@@ -111,7 +111,7 @@ var app = {
     },
     setDataToModal : function(data){
         $('#id').val(data.id);
-        $('#actividad').val(data.actividad);
+        $('#actividades').val(data.actividades);
         $('#horas').val(data.horas);
         $('#solicitud_id').val(data.solicitud_id);
     },

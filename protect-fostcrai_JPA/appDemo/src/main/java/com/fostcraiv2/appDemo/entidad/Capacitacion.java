@@ -10,10 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fostcraiv2.appDemo.entidad.Recreador;
 
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 @Table(name="capacitaciones")
 public class Capacitacion {
 
@@ -21,25 +29,22 @@ public class Capacitacion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "fechaCapacitacion")
-	private Date fechaCapacitacion;
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name = "fecha_capacitacion")
+	private Date fecha_capacitacion;
 	
-	@Column(name = "horasCapacitacion")
-	private String horasCapacitacion;
-	
-	@OneToMany(mappedBy = "id_capacitacion_fk")
-	private List<Recreador> ListSer;
+	@Column(name = "horas_capacitacion")
+	private String horas_capacitacion;
 	
 	public Capacitacion() {
 		
 	}
 
-	public Capacitacion(Long id, Date fechaCapacitacion, String horasCapacitacion, List<Recreador> listSer) {
+	public Capacitacion(Long id, Date fecha_capacitacion, String horas_capacitacion) {
 		super();
 		this.id = id;
-		this.fechaCapacitacion = fechaCapacitacion;
-		this.horasCapacitacion = horasCapacitacion;
-		ListSer = listSer;
+		this.fecha_capacitacion = fecha_capacitacion;
+		this.horas_capacitacion = horas_capacitacion;
 	}
 
 	public Long getId() {
@@ -50,34 +55,28 @@ public class Capacitacion {
 		this.id = id;
 	}
 
-	public Date getFechaCapacitacion() {
-		return fechaCapacitacion;
+	public Date getFecha_capacitacion() {
+		return fecha_capacitacion;
 	}
 
-	public void setFechaCapacitacion(Date fechaCapacitacion) {
-		this.fechaCapacitacion = fechaCapacitacion;
+	public void setFecha_capacitacion(Date fecha_capacitacion) {
+		this.fecha_capacitacion = fecha_capacitacion;
 	}
 
-	public String getHorasCapacitacion() {
-		return horasCapacitacion;
+	public String getHoras_capacitacion() {
+		return horas_capacitacion;
 	}
 
-	public void setHorasCapacitacion(String horasCapacitacion) {
-		this.horasCapacitacion = horasCapacitacion;
-	}
-
-	public List<Recreador> getListSer() {
-		return ListSer;
-	}
-
-	public void setListSer(List<Recreador> listSer) {
-		ListSer = listSer;
+	public void setHoras_capacitacion(String horas_capacitacion) {
+		this.horas_capacitacion = horas_capacitacion;
 	}
 
 	@Override
 	public String toString() {
-		return "Capacitacion [id=" + id + ", fechaCapacitacion=" + fechaCapacitacion + ", horasCapacitacion="
-				+ horasCapacitacion + ", ListSer=" + ListSer + "]";
+		return "Capacitacion [id=" + id + ", fecha_capacitacion=" + fecha_capacitacion + ", horas_capacitacion="
+				+ horas_capacitacion + "]";
 	}
 
+	
+	
 }

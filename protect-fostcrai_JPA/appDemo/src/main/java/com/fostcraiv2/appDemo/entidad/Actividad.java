@@ -33,25 +33,19 @@ public class Actividad{
 	@Column(name = "horas")
 	private int horas;	
 	
-
-	@JoinColumn(name = "solicitud_id", unique=true)
 	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "solicitud_id", unique=true)
 	private SolicitudServicio solicitudes;
 	
 	public Actividad() {
 		
 	}
 
-	public Actividad(Long id, String actividades, SolicitudServicio solicitudes) {
+	public Actividad(Long id, String actividades, int horas, SolicitudServicio solicitudes) {
 		super();
 		this.id = id;
 		this.actividades = actividades;
-		this.solicitudes = solicitudes;
-	}
-	
-	public Actividad(String actividades, SolicitudServicio solicitudes) {
-		super();
-		this.actividades = actividades;
+		this.horas = horas;
 		this.solicitudes = solicitudes;
 	}
 
@@ -71,6 +65,14 @@ public class Actividad{
 		this.actividades = actividades;
 	}
 
+	public int getHoras() {
+		return horas;
+	}
+
+	public void setHoras(int horas) {
+		this.horas = horas;
+	}
+
 	public SolicitudServicio getSolicitudes() {
 		return solicitudes;
 	}
@@ -85,8 +87,5 @@ public class Actividad{
 				+ solicitudes + "]";
 	}
 
-	
-	
-	
 	
 }

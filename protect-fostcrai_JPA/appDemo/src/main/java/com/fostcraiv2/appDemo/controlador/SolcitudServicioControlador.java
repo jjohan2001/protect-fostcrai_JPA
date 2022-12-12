@@ -46,7 +46,7 @@ public class SolcitudServicioControlador {
 	public String actualizarSolicitud(@PathVariable Long id, @ModelAttribute("solicitud") SolicitudServicio solicitud, Model modelo){
 		SolicitudServicio solicitudExistente = service.obtenerSolicitudpoId(id);
 		solicitudExistente.setId(id);
-		solicitudExistente.setFechaServicio(solicitud.getFechaServicio());
+		solicitudExistente.setFecha_servicio(solicitud.getFecha_servicio());
 		solicitudExistente.setId_cliente_fk(solicitud.getId_cliente_fk());
 		solicitudExistente.setId_servicio_fk(solicitud.getId_servicio_fk());
 		

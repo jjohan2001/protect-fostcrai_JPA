@@ -47,8 +47,8 @@ public class CapacitacionControlador {
 	public String actualizarCapacitacion(@PathVariable Long id, @ModelAttribute("capacitacion") Capacitacion capacitacion, Model modelo) {
 		Capacitacion capacitacionExistente = service.obetenerCapacitacionporId(id);
 		capacitacionExistente.setId(id);
-		capacitacionExistente.setFechaCapacitacion(capacitacion.getFechaCapacitacion());
-		capacitacionExistente.setHorasCapacitacion(capacitacion.getHorasCapacitacion());
+		capacitacionExistente.setFecha_capacitacion(capacitacion.getFecha_capacitacion());
+		capacitacionExistente.setHoras_capacitacion(capacitacion.getHoras_capacitacion());
 		
 		service.actualizarCapacitacion(capacitacionExistente);
 		return "redirect:capacitacion";
