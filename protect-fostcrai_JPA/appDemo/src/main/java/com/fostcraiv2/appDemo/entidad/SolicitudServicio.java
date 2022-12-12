@@ -22,12 +22,16 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fostcraiv2.appDemo.entidad.Cliente;
 import com.fostcraiv2.appDemo.entidad.Servicio;
 import com.fostcraiv2.appDemo.entidad.Recreador;
 
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 @Table(name="solcitudServicios")
 public class SolicitudServicio {
 
@@ -37,21 +41,19 @@ public class SolicitudServicio {
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(iso = ISO.DATE)
-	@Column(name = "fecha_Servicio")
-	private Date fecha_Servicio;
+	@Column(name = "fecha_servicio")
+	private Date fecha_servicio;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_cliente_fk", referencedColumnName = "id")
 	private Cliente id_cliente_fk;
 	
 	
-	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "id_servicio_fk", referencedColumnName = "id")
 	private Servicio id_servicio_fk;
 	
-	@JsonIgnore
+	
 	@ManyToMany(mappedBy = "listaSolicitudes")
 	private List<Recreador> listRec;
 	
@@ -59,12 +61,14 @@ public class SolicitudServicio {
 		
 	}
 
-	public SolicitudServicio(Long id, Date fechaServicio, Cliente id_cliente_fk, Servicio id_servicio_fk) {
+	public SolicitudServicio(Long id, Date fecha_servicio, Cliente id_cliente_fk, Servicio id_servicio_fk,
+			List<Recreador> listRec) {
 		super();
 		this.id = id;
-		this.fecha_Servicio = fechaServicio;
+		this.fecha_servicio = fecha_servicio;
 		this.id_cliente_fk = id_cliente_fk;
 		this.id_servicio_fk = id_servicio_fk;
+		this.listRec = listRec;
 	}
 
 	public Long getId() {
@@ -75,12 +79,12 @@ public class SolicitudServicio {
 		this.id = id;
 	}
 
-	public Date getFechaServicio() {
-		return fecha_Servicio;
+	public Date getFecha_servicio() {
+		return fecha_servicio;
 	}
 
-	public void setFechaServicio(Date fechaServicio) {
-		this.fecha_Servicio = fechaServicio;
+	public void setFecha_servicio(Date fecha_servicio) {
+		this.fecha_servicio = fecha_servicio;
 	}
 
 	public Cliente getId_cliente_fk() {
@@ -99,10 +103,20 @@ public class SolicitudServicio {
 		this.id_servicio_fk = id_servicio_fk;
 	}
 
+	public List<Recreador> getListRec() {
+		return listRec;
+	}
+
+	public void setListRec(List<Recreador> listRec) {
+		this.listRec = listRec;
+	}
+
 	@Override
 	public String toString() {
-		return "SolicitudServicio [id=" + id + ", fechaServicio=" + fecha_Servicio + ", id_cliente_fk=" + id_cliente_fk
-				+ ", id_servicio_fk=" + id_servicio_fk + "]";
+		return "SolicitudServicio [id=" + id + ", fecha_servicio=" + fecha_servicio + ", id_cliente_fk=" + id_cliente_fk
+				+ ", id_servicio_fk=" + id_servicio_fk + ", listRec=" + listRec + "]";
 	}
+
+	
 
 }
