@@ -5,7 +5,7 @@ var app = {
         app.initDatatable('#solicitudes');
 
         
-
+ 
         $('#save').click(function(){
             
             const servicio = document.getElementById("servicio").value;
@@ -53,7 +53,6 @@ var app = {
             dom: 'Bfrtip',
             columns : [
                 {data: "id"},
-                {data : "edad"},
                 {data : "fecha_servicio"},
                 {data : "id_cliente_fk"},
                 {data : "id_servicio_fk"}

@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 
 import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 import com.fostcraiv2.appDemo.entidad.Usuario;
@@ -46,7 +47,8 @@ public class Recreador {
 	@OneToOne(cascade=CascadeType.ALL)
 	private Usuario usu;
 	
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_capacitacion_fk", referencedColumnName = "id")
 	private Capacitacion id_capacitacion_fk;
 	
