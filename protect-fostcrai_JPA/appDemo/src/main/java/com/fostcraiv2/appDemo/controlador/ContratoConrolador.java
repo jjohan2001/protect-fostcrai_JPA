@@ -46,7 +46,7 @@ public class ContratoConrolador {
 	public String actualizarContrato(@PathVariable Long id, @ModelAttribute("contrato") Contrato contrato, Model modelo) {
 		Contrato contratoExistente = service.obtenerContratoporId(id);
 		contratoExistente.setId(id);
-		contratoExistente.setFechaEntrada(contrato.getFechaEntrada());
+		contratoExistente.setFecha_entrada(contrato.getFecha_entrada());
 		contratoExistente.setDias(contrato.getDias());
 		contratoExistente.setHoras(contrato.getHoras());
 		

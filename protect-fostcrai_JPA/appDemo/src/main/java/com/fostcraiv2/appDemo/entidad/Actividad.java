@@ -33,20 +33,27 @@ public class Actividad{
 	@Column(name = "horas")
 	private int horas;	
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "solicitud_id",referencedColumnName = "id", unique=true)
-	private SolicitudServicio solicitudes;
+	@OneToOne
+	@JoinColumn(name = "solicitud_id",referencedColumnName = "id")
+	private SolicitudServicio solicitud_id;
 	
 	public Actividad() {
 		
 	}
 
-	public Actividad(Long id, String actividades, int horas, SolicitudServicio solicitudes) {
+	public Actividad(Long id, String actividades, int horas, SolicitudServicio solicitud_id) {
 		super();
 		this.id = id;
 		this.actividades = actividades;
 		this.horas = horas;
-		this.solicitudes = solicitudes;
+		this.solicitud_id = solicitud_id;
+	}
+	
+	public Actividad(String actividades, int horas, SolicitudServicio solicitud_id) {
+		super();
+		this.actividades = actividades;
+		this.horas = horas;
+		this.solicitud_id = solicitud_id;
 	}
 
 	public Long getId() {
@@ -73,19 +80,20 @@ public class Actividad{
 		this.horas = horas;
 	}
 
-	public SolicitudServicio getSolicitudes() {
-		return solicitudes;
+	public SolicitudServicio getSolicitud_id() {
+		return solicitud_id;
 	}
 
-	public void setSolicitudes(SolicitudServicio solicitudes) {
-		this.solicitudes = solicitudes;
+	public void setSolicitud_id(SolicitudServicio solicitud_id) {
+		this.solicitud_id = solicitud_id;
 	}
 
 	@Override
 	public String toString() {
-		return "Actividad [id=" + id + ", actividades=" + actividades + ", horas=" + horas + ", solicitudes="
-				+ solicitudes + "]";
+		return "Actividad [id=" + id + ", actividades=" + actividades + ", horas=" + horas + ", solicitud_id="
+				+ solicitud_id + "]";
 	}
-
+	
+	
 	
 }

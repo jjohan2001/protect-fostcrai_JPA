@@ -48,7 +48,7 @@ public class ActividadControlador{
 		Actividad actividadExistente = service.obtenerActividadporId(id);
 		actividadExistente.setId(id);
 		actividadExistente.setActividades(actividad.getActividades());
-		actividadExistente.setSolicitudes(actividad.getSolicitudes());
+		actividadExistente.setSolicitud_id(actividad.getSolicitud_id());
 
 		service.actualizarActividad(actividadExistente);
 		return "redirect:/actividades";

@@ -1,5 +1,5 @@
 var app = {
-    backend: 'http://localhost:8080/api/contratos',
+    backend: 'http://localhost:8080/api/contrato',
     table : null,
     init: function(){
         app.initDatatable('#contrato');
@@ -55,7 +55,8 @@ var app = {
                 {data: "id"},
                 {data : "dias"},
                 {data : "fecha_entrada"},
-                {data : "horas"}
+                {data : "horas"},
+                {data : "id_recreador_fk"}
             ],
             buttons: [
                 {

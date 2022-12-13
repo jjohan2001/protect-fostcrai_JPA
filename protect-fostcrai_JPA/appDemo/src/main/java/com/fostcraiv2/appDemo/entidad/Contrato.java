@@ -13,6 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @Entity
 @Table(name="contratos")
@@ -22,8 +27,10 @@ public class Contrato {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "fechaEntrada")
-	private Date fechaEntrada;
+	private Date fecha_entrada;
 	
 	@Column(name = "horas")
 	private String horas;
@@ -39,17 +46,18 @@ public class Contrato {
 		
 	}
 
-	public Contrato(Long id, Date fechaEntrada, String horas, String dias, Recreador id_recreador_fk) {
+	public Contrato(Long id, Date fecha_entrada, String horas, String dias, Recreador id_recreador_fk) {
 		super();
 		this.id = id;
-		this.fechaEntrada = fechaEntrada;
+		this.fecha_entrada = fecha_entrada;
 		this.horas = horas;
 		this.dias = dias;
 		this.id_recreador_fk = id_recreador_fk;
 	}
-	public Contrato(Date fechaEntrada, String horas, String dias, Recreador id_recreador_fk) {
+
+	public Contrato(Date fecha_entrada, String horas, String dias, Recreador id_recreador_fk) {
 		super();
-		this.fechaEntrada = fechaEntrada;
+		this.fecha_entrada = fecha_entrada;
 		this.horas = horas;
 		this.dias = dias;
 		this.id_recreador_fk = id_recreador_fk;
@@ -63,12 +71,12 @@ public class Contrato {
 		this.id = id;
 	}
 
-	public Date getFechaEntrada() {
-		return fechaEntrada;
+	public Date getFecha_entrada() {
+		return fecha_entrada;
 	}
 
-	public void setFechaEntrada(Date fechaEntrada) {
-		this.fechaEntrada = fechaEntrada;
+	public void setFecha_entrada(Date fecha_entrada) {
+		this.fecha_entrada = fecha_entrada;
 	}
 
 	public String getHoras() {
@@ -97,9 +105,10 @@ public class Contrato {
 
 	@Override
 	public String toString() {
-		return "Contrato [id=" + id + ", fechaEntrada=" + fechaEntrada + ", horas=" + horas + ", dias=" + dias
+		return "Contrato [id=" + id + ", fecha_entrada=" + fecha_entrada + ", horas=" + horas + ", dias=" + dias
 				+ ", id_recreador_fk=" + id_recreador_fk + "]";
 	}
-	
 
+
+	
 }
