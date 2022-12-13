@@ -34,7 +34,7 @@ public class Actividad{
 	private int horas;	
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "solicitud_id", unique=true)
+	@JoinColumn(name = "solicitud_id",referencedColumnName = "id", unique=true)
 	private SolicitudServicio solicitudes;
 	
 	public Actividad() {

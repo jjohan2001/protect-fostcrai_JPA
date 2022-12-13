@@ -20,7 +20,7 @@ import com.fostcraiv2.appDemo.service.ActividadService;
 @RequestMapping(value = "/api/actividades/")
 @CrossOrigin("*")
 public class ActividadRestcontroller {
-
+	
 	@Autowired
 	private ActividadService serviceA;
 	

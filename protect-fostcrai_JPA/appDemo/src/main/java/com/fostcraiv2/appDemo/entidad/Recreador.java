@@ -13,6 +13,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,9 +27,12 @@ import javax.persistence.FetchType;
 import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 import com.fostcraiv2.appDemo.entidad.Usuario;
 import com.fostcraiv2.appDemo.entidad.Contrato;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fostcraiv2.appDemo.entidad.Capacitacion;
 
 @Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 @Table(name="recreadores")
 public class Recreador {
 
@@ -31,8 +40,10 @@ public class Recreador {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "fechaNacimiento")
-	private Date fechaNacimiento;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(iso = ISO.DATE)
+	@Column(name = "fecha_nacimiento")
+	private Date fecha_nacimiento;
 	
 	@Column(name = "edad")
 	private int edad;
@@ -43,12 +54,13 @@ public class Recreador {
 			inverseJoinColumns=@JoinColumn(name = "id_solicitud_fk", nullable=false))
 	private List<SolicitudServicio> listaSolicitudes;
 	
+	
+	@OneToOne
 	@JoinColumn(name = "id_usuario_fk", unique=true)
-	@OneToOne(cascade=CascadeType.ALL)
-	private Usuario usu;
+	private Usuario id_usuario_fk;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "id_capacitacion_fk", referencedColumnName = "id")
 	private Capacitacion id_capacitacion_fk;
 	
@@ -58,24 +70,24 @@ public class Recreador {
 	}
 
 
-	public Recreador(Long id, Date fechaNacimiento, int edad, List<SolicitudServicio> listaSolicitudes, Usuario usu,
-			Capacitacion id_capacitacion_fk) {
+	public Recreador(Long id, Date fecha_nacimiento, int edad, List<SolicitudServicio> listaSolicitudes,
+			Usuario id_usuario_fk, Capacitacion id_capacitacion_fk) {
 		super();
 		this.id = id;
-		this.fechaNacimiento = fechaNacimiento;
+		this.fecha_nacimiento = fecha_nacimiento;
 		this.edad = edad;
 		this.listaSolicitudes = listaSolicitudes;
-		this.usu = usu;
+		this.id_usuario_fk = id_usuario_fk;
 		this.id_capacitacion_fk = id_capacitacion_fk;
 	}
 
-	public Recreador(Date fechaNacimiento, int edad, List<SolicitudServicio> listaSolicitudes, Usuario usu,
-			Capacitacion id_capacitacion_fk) {
+	public Recreador(Date fecha_nacimiento, int edad, List<SolicitudServicio> listaSolicitudes,
+			Usuario id_usuario_fk, Capacitacion id_capacitacion_fk) {
 		super();
-		this.fechaNacimiento = fechaNacimiento;
+		this.fecha_nacimiento = fecha_nacimiento;
 		this.edad = edad;
 		this.listaSolicitudes = listaSolicitudes;
-		this.usu = usu;
+		this.id_usuario_fk = id_usuario_fk;
 		this.id_capacitacion_fk = id_capacitacion_fk;
 	}
 
@@ -90,13 +102,13 @@ public class Recreador {
 	}
 
 
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
+	public Date getFecha_nacimiento() {
+		return fecha_nacimiento;
 	}
 
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setFecha_nacimiento(Date fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
 
@@ -120,13 +132,13 @@ public class Recreador {
 	}
 
 
-	public Usuario getUsu() {
-		return usu;
+	public Usuario getId_usuario_fk() {
+		return id_usuario_fk;
 	}
 
 
-	public void setUsu(Usuario usu) {
-		this.usu = usu;
+	public void setId_usuario_fk(Usuario id_usuario_fk) {
+		this.id_usuario_fk = id_usuario_fk;
 	}
 
 
@@ -142,8 +154,9 @@ public class Recreador {
 
 	@Override
 	public String toString() {
-		return "Recreador [id=" + id + ", fechaNacimiento=" + fechaNacimiento + ", edad=" + edad + ", listaSolicitudes="
-				+ listaSolicitudes + ", usu=" + usu + ", id_capacitacion_fk=" + id_capacitacion_fk + "]";
+		return "Recreador [id=" + id + ", fecha_nacimiento=" + fecha_nacimiento + ", edad=" + edad
+				+ ", listaSolicitudes=" + listaSolicitudes + ", id_usuario_fk=" + id_usuario_fk
+				+ ", id_capacitacion_fk=" + id_capacitacion_fk + "]";
 	}
 	
 	

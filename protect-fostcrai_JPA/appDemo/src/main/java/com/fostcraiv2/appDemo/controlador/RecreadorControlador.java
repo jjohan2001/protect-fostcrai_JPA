@@ -49,9 +49,9 @@ public class RecreadorControlador {
 		
 		recreadorExistente.setId(id);
 		recreadorExistente.setEdad(recreador.getEdad());
-		recreadorExistente.setFechaNacimiento(recreador.getFechaNacimiento());
+		recreadorExistente.setFecha_nacimiento(recreador.getFecha_nacimiento());
 		recreadorExistente.setId_capacitacion_fk(recreador.getId_capacitacion_fk());
-		recreadorExistente.setUsu(recreador.getUsu());
+		recreadorExistente.setId_usuario_fk(recreador.getId_usuario_fk());
 		
 		service.actualizarRecreador(recreadorExistente);
 		return "redirect:recreadores";
