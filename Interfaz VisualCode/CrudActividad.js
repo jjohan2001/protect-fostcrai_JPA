@@ -8,7 +8,7 @@ var app = {
 
         $('#save').click(function(){
             
-            const actividad = document.getElementById("actividades").value;
+            const actividad = document.getElementById("activid ad").value;
             const horas = document.getElementById("horas").value;
             const solicitud = document.getElementById("solicitud_id").value;
 
@@ -17,7 +17,7 @@ var app = {
                     $("#validacionA").html("<span style='color:red'>Complete el campo</span>").fadeOut(4000);
                 },1000);
 
-                $('#actividades').focus();
+                $('#actividad').focus();
                 return false;
             }else if (horas =='') {
                 setTimeout(function(){
@@ -36,7 +36,7 @@ var app = {
             }
             app.save({
                 id :$('#id').val(),
-                actividad : $('#actividades').val(),
+                actividad : $('#actividad').val(),
                 horas: $('#horas').val(),
                 solicitud : $('#solicitud_id').val(),
             });
@@ -55,7 +55,7 @@ var app = {
                 {data: "id"},
                 {data : "actividades"},
                 {data : "horas"},
-                {data : "solicitud_id.id"}
+                {data : "solicitud_id"}
             ],
             buttons: [
                 {
@@ -113,7 +113,7 @@ var app = {
         $('#id').val(data.id);
         $('#actividades').val(data.actividades);
         $('#horas').val(data.horas);
-        $('#solicitud_id').val(data.solicitud_id.id);
+        $('#solicitud_id').val(data.solicitud_id);
     },
     cleanForm: function(){
         $('#id').val('');

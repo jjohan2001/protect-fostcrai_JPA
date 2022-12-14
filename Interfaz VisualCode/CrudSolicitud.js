@@ -54,8 +54,8 @@ var app = {
             columns : [
                 {data: "id"},
                 {data : "fecha_servicio"},
-                {data : "id_cliente_fk.cedula"},
-                {data : "id_servicio_fk.nombre_servicio"}
+                {data : "id_cliente_fk"},
+                {data : "id_servicio_fk"}
             ],
             buttons: [
                 {
@@ -111,9 +111,9 @@ var app = {
     },
     setDataToModal : function(data){
         $('#id').val(data.id);
+        $('#servicio').val(data.id_servicio_fk);
         $('#fecha').val(data.fecha_servicio);
-        $('#cli').val(data.id_cliente_fk);
-        $('#servicio').val();
+        $('#cliente').val(data.id_cliente_fk);
     },
     cleanForm: function(){
         $('#id').val('');
@@ -161,14 +161,7 @@ var app = {
             }
         })
     }
-
 };
-$.getJSON("/listaServicio", {}, function(data){
-    $.each(data, function(i,item){
-      $("#id_servicio").append("<option value="+item.id+">"+ item.id + "</option>");
-    });
-  });
-
 
 
 $(document).ready(function(){

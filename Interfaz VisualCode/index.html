@@ -1,98 +1,331 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pagina web</title>
-    <link rel="stylesheet" href="Estilo.css">
+  <meta charset="utf-8">
+  <title>Fostcrai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <!-- estilos -->
+  <link rel="stylesheet" href="assets/css/fancybox/jquery.fancybox.css">
+  <link href="assets/css/bootstrap.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap-theme.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/slippry.css">
+  <link href="assets/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/color/default.css">
+  <script src="assets/js/modernizr.custom.js"></script>
 </head>
 
+<body>
+  <header>
 
-<body class="img">
-    <header class="menu">
-        <ul>
-            <li class="inicio"><a class="active menup" href="#home">Inicio</a></li>
-            <li><a class="nemuP" href="login.html">Iniciar Sesión</a></li>
-            <li><a class="nemuP" href="formulario.html">Solicitar Evento</a></li>
-            <li><a class="nemuP" href="programacion.html">Programación</a></li>
-            <li><a class="nemuP" href="Contratación.html">Acerca de nosotros</a></li>
-        </ul>
+    <div id="navigation" class="navbar navbar-inverse navbar-fixed-top default" role="navigation">
+      <div class="container">
 
+        <!-- Marca y alternar se agrupan para una mejor pantalla móvil -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Foster Eventos y Recreaciones</a>
+        </div>
 
-        <section class="texto-header">
-            <h1> ¿Quieres realizar algún Evento para tu familia?</h1>
-            <h2>Tu mejor opcion es Foster Eventos y recreación</h2>
-        </section>
-        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
-                style="height: 100%; width: 100%;">
-                <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-                style="stroke: none; fill: rgb(231, 231, 231);"></path>
-            </svg></div>
-    </header>
-    <section class="section">
-        <main>
-            <section class="contenedor sobre-nosotros">
-                <h2 class="titulo">Nuestros Servicios</h2>
-                <div class="contenedor-sobre-nosotros">
-                    <img src="c4.jpg" alt="" class="imagen ">
-                    <div class="contenido-texto">
-                        <h3><span>1</span>Paquete Recreacion</h3>
-                        <p>Paquetes de Recreacion:
-                            2 Horas - Apartir de $70.000</p>
-                        <h3><span>2</span>Sonido Profesional Básico</h3>
-                        <p>7 Horas - A partir de $230.000</p>
-                        <h3><span>3</span>Decoración</h3>
-                        <p>Duracion variable- A partir de $ 120.000</p>
-                        <h3><span>4</span>Saltarines</h3>
-                        <p>4 Horas - A partir de $160.000</p>
-                    </div>
-                </div>
-            </section>
-            <section class="portafolio">
-                <div class="contenedor">
-                    <h2 class="titulo"></h2>
-                    <div class="galeria-port">
-                        <div class="imagen-port">
-                            <img src="" alt="">
-    
-                        </div>
-    
-                    </div>
-    
-                </div>
-                <section>
-                    <div class="cliente contenedor">
-                        <h2 class="titulo"></h2>
-    
-                    </div>
-    
-                </section>
-    
-            </section>
-        </main>
-        <section id="Foster">
-    
-            <div class="container">
-    
-                <h4>Foster Eventos y Recreacion</h4>
-    
-                <p>Somos una empresa seria innovadora dedicada al entretenimiento familiar y colectivo de una manera sana y
-                    divertida, brindando diversos servicios con la calidad y respeto que nuestros clientes merecen, pensando
-                    siempre
-                    en nuestro país y nuestra comunidad brindando una forma de empleo a los jóvenes y diversas personas que
-                    nos
-                    rodean como Djs, animadores, fotógrafos , decoradores , pasteleros , mariachis etc. (SI TIENES ALGÚN
-                    TALENTO U
-                    ORGANIZACIÓN QUE CREES QUE NOS PUEDA SERVIR SOLO CONTÁCTANOS).</p>
-    
-                <p class="large text-yellow">Oscar Maecha</p>
-                <p>Telefono 312-5372204</p>
-    
+        <div class="navigation">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <nav>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="current"><a href="#intro">Inicio</a></li>
+                <li><a href="#acerca">Acerca de nosotros</a></li>
+                <li><a href="#fotos">Fotos</a></li>
+                <li><a href="#evento">Solicitar Evento</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+              </ul>
+            </nav>
+          </div>
+          <!-- /.barra de naegacion -->
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+  <!--intro -->
+  <section id="intro">
+    <ul id="slippry-slider">
+      <li>
+        <a href="#slide1"><img src="assets/img/slide/1.jpg" alt="Bienvenidos a Foster Eventos y recreaciones "></a>
+      </li>
+      <li>
+        <a href="#slide2"><img src="assets/img/slide/2.jpeg"  alt="Siguenos si quieres ver mas Contenido"></a>
+      </li>
+      <li>
+        <a href="#slide3"><img src="assets/img/slide/3.webp" alt="Escribenos <span class='red'>♥</span>  :)"></a>
+      </li>
+    </ul>
+  </section>
+  <!-- fin del intro -->
+
+  <section id="acerca" class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="heading">
+            <h3><span>Nuestros servicios</span></h3>
+          </div>
+          <div class="sub-heading">
+            <p>
+              Tenemos varios servicios que incluyen tambien varios descuentos como son:
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="assets/img/dummies/team1.jpg" alt="" class="img-responsive" />
+            <div class="roles">
+              <h5><strong>Paquete Recreacion 1</strong></h5>
+              <p>
+                Paquete de Recreacion apartir de dos Horas - en tan solo $70.000
+              </p>
+              <ul class="social-profile">
+                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram fa-lg"></i></a></li>
+              </ul>
             </div>
-        </section>
-    </section>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="assets/img/dummies/team2.jpg" alt="" class="img-responsive" />
+            <div class="roles">
+              <h5><strong>Sonido Profecional Basico 2</strong></h5>
+              <p>
+                7 Horas - apartir de $230.000
+              </p>
+              <ul class="social-profile">
+                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram fa-lg"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="assets/img/dummies/team3.png" alt="" class="img-responsive" />
+            <div class="roles">
+              <h5><strong>Decoracion 3</strong></h5>
+              <p>
+                Duracion Variable - Apartir de $120.000
+              </p>
+              <ul class="social-profile">
+                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram fa-lg"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-box">
+            <img src="assets/img/dummies/team4.jpg" alt="" class="img-responsive" />
+            <div class="roles">
+              <h5><strong>Saltarines 4</strong></h5>
+              <p>
+                4 Horas - Apartir de $160.000
+              </p>
+              <ul class="social-profile">
+                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram fa-lg"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- seccion final -->
+  <section id="fotos" class="section gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="heading">
+            <h3><span>Fotos</span></h3>
+          </div>
+          <div class="sub-heading">
+            <p>
+              vemos nuestro trabajo reflejao en las sonrisas de las personas
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="grid effect" id="grid">
+            <li>
+              <a class="fancybox" data-fancybox-group="gallery" title="Tema Rosa" href="assets/img/portfolio/1.jpg">
+								<img src="assets/img/portfolio/1.jpg" alt="" />
+							</a>
+            </li>
+            <li><a href="assets/img/portfolio/2.jpg" class="fancybox" data-fancybox-group="gallery" title="Tema color rosa y gris"><img src="assets/img/portfolio/2.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/3.jpg" class="fancybox" data-fancybox-group="gallery" title="15 Años"><img src="assets/img/portfolio/3.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/4.png" class="fancybox" data-fancybox-group="gallery" title="Tema 15 Años"><img src="assets/img/portfolio/4.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/5.jpg" class="fancybox" data-fancybox-group="gallery" title="Grabaciones"><img src="assets/img/portfolio/5.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/6.jpg" class="fancybox" data-fancybox-group="gallery" title="Tema Neon"><img src="assets/img/portfolio/6.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/7.webp" class="fancybox" data-fancybox-group="gallery" title="Tema Safari"><img src="assets/img/portfolio/7.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/8.jpg" class="fancybox" data-fancybox-group="gallery" title="Tema infantil"><img src="assets/img/portfolio/8.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/9.jpg" class="fancybox" data-fancybox-group="gallery" title="Tema infantil"><img src="assets/img/portfolio/9.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/10.jpg" class="fancybox" data-fancybox-group="gallery" title="fiesta 5 Años"><img src="assets/img/portfolio/10.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/11.jpg" class="fancybox" data-fancybox-group="gallery" title="Decoracion de Globos"><img src="assets/img/portfolio/11.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/12.jpeg" class="fancybox" data-fancybox-group="gallery" title="formas con Globos"><img src="assets/img/portfolio/12.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/13.jpg" class="fancybox" data-fancybox-group="gallery" title="feliz Cumpleaños"><img src="assets/img/portfolio/13.jpg" alt="" /></a></li>
+            <li><a href="assets/img/portfolio/14.jpg" class="fancybox" data-fancybox-group="gallery" title="Lina de Globos"><img src="assets/img/portfolio/14.jpg" alt="" /></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contacto -->
+  <section id="evento" class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="heading">
+            <h3><span>Solicitar Eventos</span></h3>
+          </div>
+          <div class="sub-heading">
+            <p>
+              Escribenos un correo si quieres solicitar nuestros servicios.
+              <br>
+              ¡respuesta inmediata!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h4><i class="icon-envelope"></i><strong>Formulario de contacto</strong></h4>
+          <p>
+           
+          ¿Quieres solicitar nuestros Servicios o simplemente quieres saludarnos? ¡No dude en ponerse en contacto!
+          </p>
+          <!-- formulario de contacto -->
+          <div class="cform" id="contact-form">
+
+
+            <div id="sendmessage">Tu mensaje ha sido enviado. ¡Gracias!</div>
+            <div id="errormessage"></div>
+            <form action="" method="post" role="form" class="contactForm">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Nombre completo" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Ingresa tu correo" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="mensaje"></textarea>
+                <div class="validation"></div>
+              </div>
+
+              <div class="text-center"><button type="submit" class="btn btn-lg btn-theme">Enviar Mensaje</button></div>
+            </form>
+          </div>
+          <!-- fin del formulario de contacto -->
+        </div>
+        <div class="col-md-6">
+          <h4>Encuentra nuestra ubicación</h4>
+          <p>Ver desde el mapa de Google</p>
+          <!-- mapa -->
+          <div id="section-map" class="clearfix">
+            <div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--fin de la seccion de contacto -->
+  <footer>
+    <div class="verybottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aligncenter">
+              <ul class="social-network social-circle">
+                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a href="#" class="scrollup"><i class="fa fa-angle-up fa-2x"></i></a>
+  <!-- javascript -->
+  <script src="assets/js/jquery-1.9.1.min.js"></script>
+  <script src="assets/js/jquery.easing.js"></script>
+  <script src="assets/js/classie.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
+  <script src="assets/js/slippry.min.js"></script>
+  <script src="assets/js/nagging-menu.js"></script>
+  <script src="assets/js/jquery.nav.js"></script>
+  <script src="assets/js/jquery.scrollTo.js"></script>
+  <script src="assets/js/jquery.fancybox.pack.js"></script>
+  <script src="assets/js/jquery.fancybox-media.js"></script>
+  <script src="assets/js/masonry.pkgd.min.js"></script>
+  <script src="assets/js/imagesloaded.js"></script>
+  <script src="assets/js/jquery.nicescroll.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script>
+  <script src="assets/js/AnimOnScroll.js"></script>
+  <script>
+    new AnimOnScroll(document.getElementById('grid'), {
+      minDuration: 0.4,
+      maxDuration: 0.7,
+      viewportFactor: 0.2
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#slippry-slider').slippry(
+        defaults = {
+          transition: 'vertical',
+          useCSS: true,
+          speed: 5000,
+          pause: 3000,
+          initSingle: false,
+          auto: true,
+          preload: 'visible',
+          pager: false,
+        }
+
+      )
+    });
+  </script>
+
+  <script src="assets/js/custom.js"></script>
+  <script src="contactform/contactform.js"></script>
+
 </body>
 
 </html>

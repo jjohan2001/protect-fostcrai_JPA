@@ -56,7 +56,7 @@ var app = {
                 {data : "dias"},
                 {data : "fecha_entrada"},
                 {data : "horas"},
-                {data : "id_recreador_fk.id"}
+                {data : "id_recreador_fk"}
             ],
             buttons: [
                 {
@@ -113,9 +113,8 @@ var app = {
     setDataToModal : function(data){
         $('#id').val(data.id);
         $('#dias').val(data.dias);
-        $('#fecha').val(data.fecha_entrada);
+        $('#fecha_entrada').val(data.fecha);
         $('#horas').val(data.horas);
-        $('#recreador').val(data.id_recreador_fk.id);
     },
     cleanForm: function(){
         $('#id').val('');
