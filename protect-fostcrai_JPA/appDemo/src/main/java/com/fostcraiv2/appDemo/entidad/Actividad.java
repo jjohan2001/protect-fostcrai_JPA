@@ -27,7 +27,7 @@ public class Actividad{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "actividades", length = 50)
+	@Column(name = "actividades")
 	private String actividades;
 	
 	@Column(name = "horas")
@@ -48,7 +48,7 @@ public class Actividad{
 		this.horas = horas;
 		this.solicitud_id = solicitud_id;
 	}
-	
+
 	public Actividad(String actividades, int horas, SolicitudServicio solicitud_id) {
 		super();
 		this.actividades = actividades;
@@ -93,7 +93,6 @@ public class Actividad{
 		return "Actividad [id=" + id + ", actividades=" + actividades + ", horas=" + horas + ", solicitud_id="
 				+ solicitud_id + "]";
 	}
-	
 	
 	
 }

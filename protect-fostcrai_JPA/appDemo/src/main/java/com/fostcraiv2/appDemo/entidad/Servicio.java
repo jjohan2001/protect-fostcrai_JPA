@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="servicios")
 public class Servicio {
@@ -18,23 +20,31 @@ public class Servicio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "nombreServicio")
-	private String nombreServicio;
+	@Column(name = "nombre_servicio")
+	private String nombre_servicio;
 	
 	@Column(name = "valor")
 	private int valor;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@OneToMany(mappedBy = "id_servicio_fk")
-	private List<SolicitudServicio> ListSol;;
+	private List<SolicitudServicio> ListSol;
 	
 	public Servicio() {
 		
 	}
 
-	public Servicio(Long id, String nombreServicio, int valor, List<SolicitudServicio> listSol) {
+	public Servicio(Long id, String nombre_servicio, int valor, List<SolicitudServicio> listSol) {
 		super();
 		this.id = id;
-		this.nombreServicio = nombreServicio;
+		this.nombre_servicio = nombre_servicio;
+		this.valor = valor;
+		ListSol = listSol;
+	}
+	
+	public Servicio(String nombre_servicio, int valor, List<SolicitudServicio> listSol) {
+		super();
+		this.nombre_servicio = nombre_servicio;
 		this.valor = valor;
 		ListSol = listSol;
 	}
@@ -47,12 +57,12 @@ public class Servicio {
 		this.id = id;
 	}
 
-	public String getNombreServicio() {
-		return nombreServicio;
+	public String getNombre_servicio() {
+		return nombre_servicio;
 	}
 
-	public void setNombreServicio(String nombreServicio) {
-		this.nombreServicio = nombreServicio;
+	public void setNombre_servicio(String nombre_servicio) {
+		this.nombre_servicio = nombre_servicio;
 	}
 
 	public int getValor() {
@@ -73,10 +83,8 @@ public class Servicio {
 
 	@Override
 	public String toString() {
-		return "Servicio [id=" + id + ", nombreServicio=" + nombreServicio + ", valor=" + valor + ", ListSol=" + ListSol
-				+ "]";
+		return "Servicio [id=" + id + ", nombre_servicio=" + nombre_servicio + ", valor=" + valor + ", ListSol="
+				+ ListSol + "]";
 	}
-	
-	
 	
 }

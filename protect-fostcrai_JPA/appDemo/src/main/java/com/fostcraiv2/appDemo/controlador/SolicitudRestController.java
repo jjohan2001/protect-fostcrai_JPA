@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fostcraiv2.appDemo.entidad.Servicio;
 import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
+import com.fostcraiv2.appDemo.service.ClienteService;
+import com.fostcraiv2.appDemo.service.ServicioService;
 import com.fostcraiv2.appDemo.service.SolicitudServicioService;
 
 @RestController
@@ -23,6 +27,19 @@ public class SolicitudRestController {
 
 	@Autowired
 	private SolicitudServicioService service;
+	
+	@Autowired
+	private ClienteService clienteService;
+	
+	@Autowired
+	private ServicioService servisService;
+	
+	@RequestMapping("/listaServicio")
+	@ResponseBody
+	public List<Servicio> listaServicio(){
+		List<Servicio> lista = servisService.listarServicios();
+		return lista;
+	}
 	
 	@GetMapping(value = "/all")
 	public List<SolicitudServicio> getALL(){

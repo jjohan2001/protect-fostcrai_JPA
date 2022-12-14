@@ -46,7 +46,7 @@ public class ServicioControlador {
 	public String actualizarServicios(@PathVariable Long id, @ModelAttribute("servicio") Servicio servicio, Model modelo) {
 		Servicio servicioExistente = service.obtenerServicioporId(id);
 		servicioExistente.setId(id);
-		servicioExistente.setNombreServicio(servicio.getNombreServicio());
+		servicioExistente.setNombre_servicio(servicio.getNombre_servicio());
 		servicioExistente.setValor(servicio.getValor());
 		
 		service.actualizarServicio(servicioExistente);

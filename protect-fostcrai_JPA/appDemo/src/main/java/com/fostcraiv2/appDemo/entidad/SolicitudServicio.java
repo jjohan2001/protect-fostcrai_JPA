@@ -25,6 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fostcraiv2.appDemo.entidad.Cliente;
 import com.fostcraiv2.appDemo.entidad.Servicio;
@@ -44,6 +45,7 @@ public class SolicitudServicio {
 	@Column(name = "fecha_servicio")
 	private Date fecha_servicio;
 	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@ManyToOne
 	@JoinColumn(name = "id_cliente_fk", referencedColumnName = "id")
 	private Cliente id_cliente_fk;

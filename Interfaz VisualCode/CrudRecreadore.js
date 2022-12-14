@@ -72,8 +72,8 @@ var app = {
                 {data: "id"},
                 {data : "edad"},
                 {data : "fecha_nacimiento"},
-                {data : "id_capacitacion_fk"},
-                {data : "id_usuario_fk"}
+                {data : "id_capacitacion_fk.id"},
+                {data : "id_usuario_fk.nombre"}
             ],
             buttons: [
                 {
@@ -130,10 +130,10 @@ var app = {
     setDataToModal : function(data){
         $('#id').val(data.id);
         $('#edad').val(data.edad);
-        $('#fecha').val(data.fecha);
-        $('#capacitacion').val(data.capacitacion);
-        $('#contrato').val(data.contrato);
-        $('#usuario').val(data.usuario);
+        $('#fecha').val(data.fecha_nacimiento);
+        $('#capacitacion').val(data.id_capacitacion_fk.id);
+        $('#contrato').val(data.id_capacitacion_fk.id);
+        $('#usuario').val(data.id_usuario_fk.nombre);
     },
     cleanForm: function(){
         $('#id').val('');
