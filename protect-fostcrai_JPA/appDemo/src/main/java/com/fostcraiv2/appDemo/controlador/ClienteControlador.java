@@ -17,13 +17,13 @@ public class ClienteControlador {
 	@Autowired
 	private ClienteService servicio;
 	
-	@GetMapping({"/clintes", "/"})
+	@GetMapping({"/clientes", "/"})
 	public String listarClientes(Model modelo){
 		modelo.addAttribute("clientes", servicio.getAll());
 		return "clientes";
 	}
 	
-	@GetMapping("Clietnes/nuevo")
+	@GetMapping("clientes/nuevo")
 	public String formularioNuevoCliente(Model modelo) {
 		Cliente cliente = new Cliente();
 		modelo.addAttribute("cliente", cliente);
@@ -33,7 +33,7 @@ public class ClienteControlador {
 	@PostMapping("/clientes")
 	public String guardarCliente(@ModelAttribute("cliente") Cliente cliente) {
 		servicio.save(cliente);
-		return "redirect:cllientes";
+		return "redirect:clientes";
 	}
 	
 	@GetMapping("Clietnes/editar/{id}")
@@ -55,12 +55,12 @@ public class ClienteControlador {
 		clienteExistente.setFechaEvento(cliente.getFechaEvento());
 		
 		servicio.save(clienteExistente);
-		return "redirect:cllientes";
+		return "redirect:clientes";
 	}
 	
 	@GetMapping("/clientes/{id}")
 	public String eliminarCliente(@PathVariable Long id) {
 		servicio.delete(id);
-		return "redirect:cllientes";
+		return "redirect:clientes";
 	}
 }
