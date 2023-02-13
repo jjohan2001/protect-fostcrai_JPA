@@ -59,6 +59,7 @@ public class SolicitudServicio {
 	@ManyToMany(mappedBy = "listaSolicitudes")
 	private List<Recreador> listRec;
 	
+	
 	public SolicitudServicio() {
 		
 	}

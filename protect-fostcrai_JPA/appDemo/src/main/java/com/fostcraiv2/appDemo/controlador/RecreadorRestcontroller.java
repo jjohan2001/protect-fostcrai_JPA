@@ -11,10 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fostcraiv2.appDemo.entidad.Capacitacion;
 import com.fostcraiv2.appDemo.entidad.Recreador;
+import com.fostcraiv2.appDemo.entidad.Usuario;
+import com.fostcraiv2.appDemo.service.CapacitacionService;
 import com.fostcraiv2.appDemo.service.RecreadorService;
+import com.fostcraiv2.appDemo.service.UsuarioService;
 
 @RestController
 @RequestMapping(value = "/api/recreadores/")
@@ -23,6 +28,12 @@ public class RecreadorRestcontroller {
 
 	@Autowired
 	private RecreadorService  service;
+	
+	@Autowired
+	private CapacitacionService capacitacionC;
+	
+	@Autowired
+	private UsuarioService UsuarioU;
 	
 	@GetMapping(value = "/all")
 	public List<Recreador> getALL(){
@@ -51,5 +62,18 @@ public class RecreadorRestcontroller {
 		return new ResponseEntity<Recreador>(recreador, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/listaCapacitacion")
+	@ResponseBody
+	public List<Capacitacion> litaCapacitacion(){
+		List<Capacitacion> lista = capacitacionC.listarCapacitaciones();
+		return lista;
+	}
+	
+	@RequestMapping(value = "/listarUsuarios")
+	@ResponseBody
+	public List<Usuario> litaUsuarios(){
+		List<Usuario> lista = UsuarioU.listarTodosLosUsuarios();
+		return lista;
+	}
 	
 }

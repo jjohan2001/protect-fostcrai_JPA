@@ -37,8 +37,9 @@ var app = {
             app.save({
                 id :$('#id').val(),
                 dias : $('#dias').val(),
-                fecha : $('#feha').val(),
+                fecha_entrada : $('#fecha').val(),
                 horas : $('#horas').val(),
+                id_recreador_fk : $('#recreador').val(),
             });
         });
     },
@@ -56,7 +57,7 @@ var app = {
                 {data : "dias"},
                 {data : "fecha_entrada"},
                 {data : "horas"},
-                {data : "id_recreador_fk"}
+                {data : "id_recreador_fk.id"}
             ],
             buttons: [
                 {
@@ -164,6 +165,11 @@ var app = {
     }
 };
 
+$.getJSON(app.backend + "/listarRecreadores", {}, function(data){
+    $.each(data, function(i,item){
+        $("#recreador").append("<option value="+item.id +">"+ item.id +"</option>");
+    });
+});
 
 $(document).ready(function(){
     app.init();

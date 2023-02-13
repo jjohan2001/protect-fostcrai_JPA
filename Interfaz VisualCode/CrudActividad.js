@@ -8,9 +8,9 @@ var app = {
 
         $('#save').click(function(){
             
-            const actividad = document.getElementById("activid ad").value;
+            const actividad = document.getElementById("actividad").value;
             const horas = document.getElementById("horas").value;
-            const solicitud = document.getElementById("solicitud_id").value;
+            const solicitud = document.getElementById("solicitud").value;
 
             if (actividad =='') {
                 setTimeout(function(){
@@ -31,14 +31,14 @@ var app = {
                     $("#validacionS").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
                 },1000);
 
-                $('#solicitud_id').focus();
+                $('#solicitud').focus();
                 return false;
             }
             app.save({
                 id :$('#id').val(),
-                actividad : $('#actividad').val(),
+                actividades : $('#actividad').val(),
                 horas: $('#horas').val(),
-                solicitud : $('#solicitud_id').val(),
+                solicitud_id : $('#solicitud').val(),
             });
         });
     },
@@ -55,7 +55,7 @@ var app = {
                 {data: "id"},
                 {data : "actividades"},
                 {data : "horas"},
-                {data : "solicitud_id"}
+                {data : "solicitud_id.id"}
             ],
             buttons: [
                 {
@@ -111,15 +111,15 @@ var app = {
     },
     setDataToModal : function(data){
         $('#id').val(data.id);
-        $('#actividades').val(data.actividades);
+        $('#actividad').val(data.actividades);
         $('#horas').val(data.horas);
-        $('#solicitud_id').val(data.solicitud_id);
+        $('#solicitud').val(data.solicitud_id);
     },
     cleanForm: function(){
         $('#id').val('');
         $('#actividad').val('');
         $('#horas').val('');
-        $('#solicitud_id').val('');
+        $('#solicitud').val('');
     },
     save : function(data) {
         $.ajax({
@@ -162,6 +162,12 @@ var app = {
         })
     }
 };
+
+$.getJSON(app.backend + "/listaSolicitudes", {}, function(data){
+    $.each(data, function(i,item){
+        $("#solicitud").append("<option value="+item.id +">"+ item.id +"</option>");
+    });
+});
 
 
 $(document).ready(function(){

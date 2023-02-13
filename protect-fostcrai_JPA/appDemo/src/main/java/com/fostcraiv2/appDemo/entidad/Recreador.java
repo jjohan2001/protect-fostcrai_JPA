@@ -28,6 +28,7 @@ import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 import com.fostcraiv2.appDemo.entidad.Usuario;
 import com.fostcraiv2.appDemo.entidad.Contrato;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fostcraiv2.appDemo.entidad.Capacitacion;
 
@@ -35,7 +36,7 @@ import com.fostcraiv2.appDemo.entidad.Capacitacion;
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 @Table(name="recreadores")
 public class Recreador {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -48,15 +49,15 @@ public class Recreador {
 	@Column(name = "edad")
 	private int edad;
 
-	@ManyToMany
+	@ManyToMany()
 	@JoinTable(name = "programacionRec",
 			joinColumns=@JoinColumn(name = "id_recreador_fk", nullable=false),
 			inverseJoinColumns=@JoinColumn(name = "id_solicitud_fk", nullable=false))
 	private List<SolicitudServicio> listaSolicitudes;
 	
 	
-	@OneToOne
 	@JoinColumn(name = "id_usuario_fk", unique=true)
+	@OneToOne
 	private Usuario id_usuario_fk;
 	
 	
@@ -158,6 +159,5 @@ public class Recreador {
 				+ ", listaSolicitudes=" + listaSolicitudes + ", id_usuario_fk=" + id_usuario_fk
 				+ ", id_capacitacion_fk=" + id_capacitacion_fk + "]";
 	}
-	
 	
 }

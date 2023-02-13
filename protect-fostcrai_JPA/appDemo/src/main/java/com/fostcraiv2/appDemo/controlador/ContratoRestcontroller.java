@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fostcraiv2.appDemo.entidad.Contrato;
+import com.fostcraiv2.appDemo.entidad.Recreador;
 import com.fostcraiv2.appDemo.service.ContratoService;
+import com.fostcraiv2.appDemo.service.RecreadorService;
 
 @RestController
 @RequestMapping(value = "/api/contrato/")
@@ -23,6 +26,9 @@ public class ContratoRestcontroller {
 
 	@Autowired
 	private ContratoService service;
+	
+	@Autowired
+	private RecreadorService serviceR;
 	
 	@GetMapping(value = "/all")
 	public List<Contrato> getALL(){
@@ -49,6 +55,13 @@ public class ContratoRestcontroller {
 			return new ResponseEntity<Contrato> (contrato, HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<Contrato>(contrato, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/listarRecreadores")
+	@ResponseBody
+	public List<Recreador> listarRecreadores (){
+		List<Recreador> listar = serviceR.getAll();
+		return listar;
 	}
 	
 }

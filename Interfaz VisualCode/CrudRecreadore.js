@@ -11,7 +11,6 @@ var app = {
             const edad = document.getElementById("edad").value;
             const fecha = document.getElementById("fecha").value;
             const capacitacion = document.getElementById("capacitacion").value;
-            const contrato = document.getElementById("contrato").value;
             const usuario = document.getElementById("usuario").value;
 
             if (edad =='') {
@@ -35,13 +34,6 @@ var app = {
 
                 $('#capacitacion').focus();
                 return false;
-            }else if (contrato =='') {
-                setTimeout(function(){
-                    $("#validacionC").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
-                },1000);
-
-                $('#contrato').focus();
-                return false;
             }else if (usuario =='') {
                 setTimeout(function(){
                     $("#validacionU").html("<span style='color:red'>Complete el campo</span>").fadeOut(2000);
@@ -52,10 +44,10 @@ var app = {
             }
             app.save({
                 id :$('#id').val(),
-                fecha : $('#fecha').val(),
-                capacitacion : $('#capacitacion').val(),
-                contrato : $('#contrato').val(),
-                usuario : $('#usuario').val(),
+                edad : $('#edad').val(),
+                fecha_nacimiento : $('#fecha').val(),
+                id_capacitacion_fk : $('#capacitacion').val(),
+                id_usuario_fk : $('#usuario').val(),
             });
         });
     },
@@ -72,8 +64,8 @@ var app = {
                 {data: "id"},
                 {data : "edad"},
                 {data : "fecha_nacimiento"},
-                {data : "id_capacitacion_fk"},
-                {data : "id_usuario_fk"}
+                {data : "id_capacitacion_fk.id"},
+                {data : "id_usuario_fk.nombre"}
             ],
             buttons: [
                 {
@@ -130,9 +122,8 @@ var app = {
     setDataToModal : function(data){
         $('#id').val(data.id);
         $('#edad').val(data.edad);
-        $('#fecha').val(data.fecha);
-        $('#capacitacion').val(data.capacitacion);
-        $('#contrato').val(data.contrato);
+        $('#fecha').val(data.fecha_nacimiento);
+        $('#capacitacion').val(data.id_capacitacion_fk);
         $('#usuario').val(data.usuario);
     },
     cleanForm: function(){
@@ -184,6 +175,18 @@ var app = {
         })
     }
 };
+
+$.getJSON(app.backend + "/listaCapacitacion", {}, function(data){
+    $.each(data, function(i,item){
+        $("#capacitacion").append("<option value="+item.id +">"+ item.id +"</option>");
+    });
+});
+
+$.getJSON(app.backend + "/listarUsuarios", {}, function(data){
+    $.each(data, function(i,item){
+        $("#usuario").append("<option value="+item.id +">"+ item.nombre +"</option>");
+    });
+});
 
 
 $(document).ready(function(){

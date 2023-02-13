@@ -1,11 +1,16 @@
 package com.fostcraiv2.appDemo.entidad;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "usuario")
@@ -39,8 +44,8 @@ public class Usuario {
 	@Column(name = "rol", nullable = false, length = 50)
 	private String  rol;
 	
+	
 	public Usuario() {
-		
 		
 	}
 
