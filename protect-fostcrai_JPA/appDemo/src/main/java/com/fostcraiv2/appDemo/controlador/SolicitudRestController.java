@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fostcraiv2.appDemo.entidad.Cliente;
 import com.fostcraiv2.appDemo.entidad.Servicio;
 import com.fostcraiv2.appDemo.entidad.SolicitudServicio;
 import com.fostcraiv2.appDemo.service.ClienteService;
@@ -34,12 +35,6 @@ public class SolicitudRestController {
 	@Autowired
 	private ServicioService servisService;
 	
-	@RequestMapping("/listaServicio")
-	@ResponseBody
-	public List<Servicio> listaServicio(){
-		List<Servicio> lista = servisService.listarServicios();
-		return lista;
-	}
 	
 	@GetMapping(value = "/all")
 	public List<SolicitudServicio> getALL(){
@@ -66,6 +61,20 @@ public class SolicitudRestController {
 			return new ResponseEntity<SolicitudServicio>(solicitud, HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<SolicitudServicio>(solicitud, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/listaCliente")
+	@ResponseBody
+	public List<Cliente> listaClietes(){
+		List<Cliente> listaC = clienteService.getAll();
+		return listaC;
+	}
+	
+	@RequestMapping(value = "/listaServicio")
+	@ResponseBody
+	public List<Servicio> listarServicios(){
+		List<Servicio> listaS = servisService.getAll();
+		return listaS;
 	}
 	
 }

@@ -36,9 +36,9 @@ var app = {
             }
             app.save({
                 id :$('#id').val(),
-                servicio : $('#servicio').val(),
-                fecha : $('#fecha').val(),
-                contrato : $('#cliente').val(),
+                id_servicio_fk : $('#servicio').val(),
+                fecha_servicio : $('#fecha').val(),
+                id_cliente_fk : $('#cliente').val(),
             });
         });
     },
@@ -54,8 +54,8 @@ var app = {
             columns : [
                 {data: "id"},
                 {data : "fecha_servicio"},
-                {data : "id_cliente_fk"},
-                {data : "id_servicio_fk"}
+                {data : "id_cliente_fk.nombre"},
+                {data : "id_servicio_fk.nombre_servicio"}
             ],
             buttons: [
                 {
@@ -163,6 +163,17 @@ var app = {
     }
 };
 
+$.getJSON(app.backend + "/listaCliente", {}, function(data){
+    $.each(data, function(i,item){
+        $("#cliente").append("<option value="+item.id +">"+ item.nombre +"</option>");
+    });
+});
+
+$.getJSON(app.backend + "/listaServicio", {}, function(data){
+    $.each(data, function(i,item){
+        $("#servicio").append("<option value="+item.id +">"+ item.nombre_servicio +"</option>");
+    });
+});
 
 $(document).ready(function(){
     app.init();
