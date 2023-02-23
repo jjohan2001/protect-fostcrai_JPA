@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fostcraiv2.appDemo.entidad.Cliente;
 import com.fostcraiv2.appDemo.entidad.Servicio;
@@ -50,14 +51,16 @@ public class SolicitudServicio {
 	@JoinColumn(name = "id_cliente_fk", referencedColumnName = "id")
 	private Cliente id_cliente_fk;
 	
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "id_servicio_fk", referencedColumnName = "id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_servicio_fk")
 	private Servicio id_servicio_fk;
 	
 	
 	@ManyToMany(mappedBy = "listaSolicitudes")
 	private List<Recreador> listRec;
+	
+	
 	
 	
 	public SolicitudServicio() {

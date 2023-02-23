@@ -10,7 +10,7 @@ var app = {
             
             const servicio = document.getElementById("servicio").value;
             const fecha = document.getElementById("fecha").value;
-            const cliente = document.getElementById("clente").value;
+            const cliente = document.getElementById("cliente").value;
 
             if (servicio =='') {
                 setTimeout(function(){

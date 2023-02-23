@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,8 +12,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="servicios")
 public class Servicio {
 
@@ -26,7 +33,6 @@ public class Servicio {
 	@Column(name = "valor")
 	private int valor;
 	
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@OneToMany(mappedBy = "id_servicio_fk")
 	private List<SolicitudServicio> ListSol;
 	
@@ -34,6 +40,8 @@ public class Servicio {
 		
 	}
 
+	
+	
 	public Servicio(Long id, String nombre_servicio, int valor, List<SolicitudServicio> listSol) {
 		super();
 		this.id = id;
@@ -41,13 +49,14 @@ public class Servicio {
 		this.valor = valor;
 		ListSol = listSol;
 	}
-	
+
 	public Servicio(String nombre_servicio, int valor, List<SolicitudServicio> listSol) {
 		super();
 		this.nombre_servicio = nombre_servicio;
 		this.valor = valor;
 		ListSol = listSol;
 	}
+
 
 	public Long getId() {
 		return id;

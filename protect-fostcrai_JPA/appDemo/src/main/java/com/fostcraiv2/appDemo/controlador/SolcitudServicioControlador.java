@@ -25,7 +25,7 @@ public class SolcitudServicioControlador {
 	
 	@GetMapping("/solicitudes/nueva")
 	public String formularioSolicitud(Model modelo) {
-		SolicitudServicio solicitud = new SolicitudServicio();
+		SolicitudServicio solicitud = new SolicitudServicio(null, null, null, null, null);
 		modelo.addAttribute("solicitud", solicitud);
 		return "crear_solicitud";
 	}
