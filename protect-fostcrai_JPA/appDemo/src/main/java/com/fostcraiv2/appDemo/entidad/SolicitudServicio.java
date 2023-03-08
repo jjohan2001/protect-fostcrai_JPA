@@ -1,7 +1,9 @@
 package com.fostcraiv2.appDemo.entidad;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -35,7 +37,12 @@ import com.fostcraiv2.appDemo.entidad.Recreador;
 @Entity
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 @Table(name="solcitudServicios")
-public class SolicitudServicio {
+public class SolicitudServicio implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1749418782207194225L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,6 +82,27 @@ public class SolicitudServicio {
 		this.id_cliente_fk = id_cliente_fk;
 		this.id_servicio_fk = id_servicio_fk;
 		this.listRec = listRec;
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(fecha_servicio, id, id_cliente_fk, id_servicio_fk, listRec);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SolicitudServicio other = (SolicitudServicio) obj;
+		return Objects.equals(fecha_servicio, other.fecha_servicio) && Objects.equals(id, other.id)
+				&& Objects.equals(id_cliente_fk, other.id_cliente_fk)
+				&& Objects.equals(id_servicio_fk, other.id_servicio_fk) && Objects.equals(listRec, other.listRec);
 	}
 
 	public Long getId() {

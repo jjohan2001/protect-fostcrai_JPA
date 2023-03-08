@@ -49,19 +49,19 @@ public class Recreador {
 	@Column(name = "edad")
 	private int edad;
 
-	@ManyToMany()
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "programacionRec",
 			joinColumns=@JoinColumn(name = "id_recreador_fk", nullable=false),
 			inverseJoinColumns=@JoinColumn(name = "id_solicitud_fk", nullable=false))
 	private List<SolicitudServicio> listaSolicitudes;
 	
-	
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@JoinColumn(name = "id_usuario_fk", unique=true)
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private Usuario id_usuario_fk;
 	
-	
-	@ManyToOne
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_capacitacion_fk", referencedColumnName = "id")
 	private Capacitacion id_capacitacion_fk;
 	

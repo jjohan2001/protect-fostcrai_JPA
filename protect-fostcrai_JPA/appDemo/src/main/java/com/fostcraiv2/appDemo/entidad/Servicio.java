@@ -1,6 +1,8 @@
 package com.fostcraiv2.appDemo.entidad;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -18,10 +21,13 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name="servicios")
-public class Servicio {
+public class Servicio implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7854096478858652265L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,6 +62,27 @@ public class Servicio {
 		this.valor = valor;
 		ListSol = listSol;
 	}
+
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(ListSol, id, nombre_servicio, valor);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Servicio other = (Servicio) obj;
+		return Objects.equals(ListSol, other.ListSol) && Objects.equals(id, other.id)
+				&& Objects.equals(nombre_servicio, other.nombre_servicio) && valor == other.valor;
+	}
+
 
 
 	public Long getId() {
