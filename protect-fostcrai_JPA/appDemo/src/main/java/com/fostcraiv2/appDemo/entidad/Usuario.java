@@ -1,5 +1,7 @@
 package com.fostcraiv2.appDemo.entidad;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.JsonNode;
 
 @Entity
+@JsonIgnoreProperties({"recreadores"})
 @Table(name = "usuario")
 public class Usuario {
 	
@@ -75,6 +82,18 @@ public class Usuario {
 		this.password = password;
 		this.rol = rol;
 	}
+	
+	public Usuario(JsonNode json) {
+        this.nombre = json.get("nombre").asText();
+        this.apellido = json.get("apellido").asText();
+        this.cedula = json.get("cedula").asText();
+        this.celular = json.get("celular").asText();
+        this.correo = json.get("correo").asText();
+        this.direccion = json.get("direccion").asText();
+        this.password = json.get("password").asText();
+        this.rol = json.get("rol").asText();
+    }
+	
 		
 
 	public Long getId() {

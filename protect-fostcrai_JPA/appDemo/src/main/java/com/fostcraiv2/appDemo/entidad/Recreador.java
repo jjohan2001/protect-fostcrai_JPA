@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fostcraiv2.appDemo.entidad.Capacitacion;
 
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+@JsonIgnoreProperties({"capacitaciones", "usuario"})
 @Table(name="recreadores")
 public class Recreador {
 	

@@ -1,4 +1,7 @@
+
 package com.fostcraiv2.appDemo.controlador;
+
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fostcraiv2.appDemo.entidad.Recreador;
+import com.fostcraiv2.appDemo.entidad.Usuario;
 import com.fostcraiv2.appDemo.service.RecreadorService;
 
 @Controller
@@ -31,7 +35,7 @@ public class RecreadorControlador {
 	}
 	
 	@PostMapping("/recreadores")
-	public String guardarRecreador(@ModelAttribute("recreador") Recreador recreador) {
+	public String guardarRecreador(@ModelAttribute("recreador") Recreador recreador){
 		service.guardarRecreador(recreador);
 		return "redirect:recreadores";
 	}

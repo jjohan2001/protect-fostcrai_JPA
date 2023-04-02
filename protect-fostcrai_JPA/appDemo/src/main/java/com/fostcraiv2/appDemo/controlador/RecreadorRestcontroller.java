@@ -1,6 +1,8 @@
 package com.fostcraiv2.appDemo.controlador;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,7 +50,7 @@ public class RecreadorRestcontroller {
 	@PostMapping(value = "/save")
 	public ResponseEntity<Recreador> save(@RequestBody Recreador recreador){
 		Recreador obj = service.save(recreador);
-		return new ResponseEntity<Recreador>(recreador, HttpStatus.OK);
+		return new ResponseEntity<Recreador>(obj, HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/delete")

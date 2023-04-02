@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fostcraiv2.appDemo.entidad.Usuario;
 import com.fostcraiv2.appDemo.service.UsuarioService;
 
@@ -36,7 +37,7 @@ public class UsuarioRestController {
 	
 	
 	@PostMapping(value = "/save")
-	public ResponseEntity<Usuario> save(@RequestBody Usuario usuario){
+	public ResponseEntity<Usuario> save(@RequestBody JsonNode usuario){
 		Usuario obj = service.save(usuario);
 		return new ResponseEntity<Usuario>(obj, HttpStatus.OK);
 	}

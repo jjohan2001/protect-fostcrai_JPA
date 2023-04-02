@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fostcraiv2.appDemo.Genericos.GenericServiceImpl;
 import com.fostcraiv2.appDemo.dao.Usuariodao;
 import com.fostcraiv2.appDemo.entidad.Usuario;
@@ -50,4 +51,5 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Long> implem
 	public CrudRepository<Usuario, Long> getDao() {
 		return usuariodao;
 	}
+
 }
